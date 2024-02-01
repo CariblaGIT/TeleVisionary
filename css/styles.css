@@ -213,6 +213,7 @@ body{
     align-items: center;
 }
 
+/* Style for the icons inside the channel number buttons on the remote controller */
 .channelButtons > i{
     height: 1.8em;
     width: 1.8em;

@@ -10,9 +10,13 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
+    <!-- Parent of all the website -->
     <div class="container-fluid " id="website">
+        <!-- TV container => TV based on Screen & Base -->
         <div id="televisionContainer">
+            <!-- TV element -->
             <div id="television">
+                <!-- TV Screen, with parent as border and content as child to show the web functionalities -->
                 <div id="televisionScreenBase">
                     <div id="televisionScreen">
                         <video id="screenContent" autoplay loop>
@@ -20,14 +24,18 @@
                         </video>
                     </div>
                 </div>
+                <!-- TV Base, divided in 2 pieces (horizontally one and vertically one) -->
                 <div id="televisionBase">
                     <div id="televisionHolder"></div>
                     <div id="televisionSupportBase"></div>
                 </div>
             </div>
         </div>
+        <!-- Controller container => Controller based on rows of buttons and / or gaps -->
         <div id="controllerContainer">
+            <!-- Remote controller element -->
             <div id="remoteController">
+                <!-- First row: Power button (Switch on/off TV) // Gap // Home button -->
                 <div class="controllerRow">
                     <div id="powerButton">
                         <i class="bi bi-power"></i>
@@ -37,22 +45,27 @@
                         <i class="bi bi-house"></i>
                     </div>
                 </div>
+                <!-- Second row: Arrows for increasing volume or channel, separated by a gap -->
                 <div class="controllerRow">
                     <div id="arrowUpVolume" class="arrowUp"></div>
                     <div class="gapBetweenCols"></div>
                     <div id="arrowUpChannel" class="arrowUp"></div>
                 </div>
+                <!-- Third row: Texts related to show which arrows are for channel or volume controls, separated by a gap -->
                 <div class="controllerRow">
                     <div id="volumeTag">VOL</div>
                     <div class="gapBetweenCols"></div>
                     <div id="channelTag">CHN</div>
                 </div>
+                <!-- Fourth row: Arrows for decreasing volume or channel, separated by a gap -->
                 <div class="controllerRow">
                     <div id="arrowDownVolume" class="arrowDown"></div>
                     <div class="gapBetweenCols"></div>
                     <div id="arrowDownChannel" class="arrowDown"></div>
                 </div>
+                <!-- Fifth row: Spacing between the number channel buttons and the other ones -->
                 <div class="controllerRow"></div>
+                <!-- Sixth row: Channel buttons from 1 to 3 -->
                 <div class="controllerRow">
                     <div id="channelButton1" class="channelButtons">
                         <i class="bi bi-1-circle"></i>
@@ -64,6 +77,7 @@
                         <i class="bi bi-3-circle"></i>
                     </div>
                 </div>
+                <!-- Seventh row: Channel buttons from 4 to 6 -->
                 <div class="controllerRow">
                     <div id="channelButton4" class="channelButtons">
                         <i class="bi bi-4-circle"></i>
@@ -75,6 +89,7 @@
                         <i class="bi bi-6-circle"></i>
                     </div>
                 </div>
+                <!-- Eighth row: Channel buttons from 7 to 9 -->
                 <div class="controllerRow">
                     <div id="channelButton7" class="channelButtons">
                         <i class="bi bi-7-circle"></i>
@@ -90,6 +105,7 @@
         </div>
     </div>
     <!-- Script import for Bootstrap JS interactions -->
+    <script src="./js/television.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
