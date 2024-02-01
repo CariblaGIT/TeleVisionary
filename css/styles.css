@@ -3,18 +3,83 @@ body{
     padding: 0;
 }
 
+/* Container fluid - Bootstrap parent of all website content */
 #website{
     display: flex;
     margin: 0;
     padding: 0;
+    background-color: dimgrey;
 }
 
+/* === SECTION CSS FOR THE TV === */
+
+/* TV container parent */
 #televisionContainer{
-    background-color: green;
     height: 100vh;
     width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+/* TV container */
+#television{
+    height: 95vh;
+    width: 75vw;
+}
+
+/* TV black border around the screen */
+#televisionScreenBase{
+    background-color: black;
+    height: 70vh;
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TV screen where the user will see the changes by using the controller */
+#televisionScreen{
+    margin-top: -2em;
+    height: 60vh;
+    width: 72vw;
+    display: flex;
+}
+
+/* TV screen section to show the channels */
+#screenContent{
+    width: 100%;
+    height: 100%;
+}
+
+/* TV base section */
+#televisionBase{
+    height: 25vh;
+    width: 75vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TV base handler part (black column) */
+#televisionHolder{
+    background-color: black;
+    height: 20vh;
+    width: 5vw;
+}
+
+/* TV base horizontal support to all the TV */
+#televisionSupportBase{
+    background-color: black;
+    height: 5vh;
+    width: 30vw;
+}
+
+/* === SECTION CSS FOR THE REMOTE CONTROLLER === */
+
+/* Remote controller parent */
 #controllerContainer{
     height: 100vh;
     width: 20vw;
@@ -23,6 +88,7 @@ body{
     align-items: center;
 }
 
+/* Remote controller */
 #remoteController{
     height: 49vh;
     width : 15vw;
@@ -30,6 +96,7 @@ body{
     flex-direction: column;
 }
 
+/* Class for each element inside remote controller */
 .controllerRow{
     background-color: black;
     height: 7vh;
@@ -39,30 +106,36 @@ body{
     align-items: center;
 }
 
+/* For the first 4 rows, there is a gap between the buttons to make 3 columns */
 .gapBetweenCols{
     width: 6em;
 }
 
+/* Same features for the spacing of the power button and the up volume button on the remote controller */
 #powerButton, #arrowUpVolume{
     margin-top: 1.2em;
     margin-left: 1.2em;
 }
 
+/* Spacing for arrow down button related with the volume controlled by the controller */
 #arrowDownVolume{
     margin-bottom: 1.2em;
     margin-left: 1.2em;
 }
 
+/* Same features for the spacing of the home button and the down volume button on the remote controller */
 #homeButton, #arrowUpChannel{
     margin-top: 1.2em;
     margin-right: 1.2em;
 }
 
+/* Spacing for arrow down channel related with the channel number controlled by the controller */
 #arrowDownChannel{
     margin-bottom: 1.2em;
     margin-right: 1.2em;
 }
 
+/* Style for the power button on the remote controller */
 #powerButton{
     background-color: red;
     border-radius: 50%;
@@ -73,6 +146,15 @@ body{
     align-items: center;
 }
 
+/* Style for the home button on the remote controller */
+#homeButton{
+    background-color: grey;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+}
+
+/* Style for the icons inside the home and power button on the remote controller */
 #powerButton > i, #homeButton > i{
     height: 1.8em;
     width: 1.8em;
@@ -82,13 +164,7 @@ body{
     align-items: center;
 }
 
-#homeButton{
-    background-color: grey;
-    border-radius: 50%;
-    height: 2em;
-    width: 2em;
-}
-
+/* Style for making an up arrow with CSS for volume and channel controllers on the remote controller*/
 .arrowUp{
     width: 0; 
     height: 0; 
@@ -97,6 +173,7 @@ body{
     border-bottom: 1.25em solid grey;
 }
 
+/* Style for making a dwon arrow with CSS for volume and channel controllers on the remote controller*/
 .arrowDown{
     width: 0; 
     height: 0; 
@@ -105,6 +182,7 @@ body{
     border-top: 1.25em solid grey;
 }
 
+/* Same features shared for the texts on the controller in relation with channel and volume */
 #volumeTag, #channelTag{
     display: flex;
     justify-content: center;
@@ -113,20 +191,33 @@ body{
     color:white;
 }
 
+/* Spacing for VOL text on the controller */
 #volumeTag{
     margin-left: 1.5em;
 }
 
+/* Spacing for CHN text on the controller */
 #channelTag{
     margin-right: 1.5em;
 }
 
+/* Style for the buttons from 1 to 9 to change channel on the remote controller */
 .channelButtons{
     margin: 1em;
     border-radius: 50%;
     height: 2em;
     width: 2em;
-    color:white;
     background-color: grey;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.channelButtons > i{
+    height: 1.8em;
+    width: 1.8em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
