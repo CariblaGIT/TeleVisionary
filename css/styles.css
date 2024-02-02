@@ -32,7 +32,7 @@ body{
 /* TV black border around the screen */
 #televisionScreenBase{
     background-color: black;
-    height: 70vh;
+    height: 80vh;
     width: 75vw;
     display: flex;
     justify-content: center;
@@ -42,9 +42,10 @@ body{
 /* TV screen where the user will see the changes by using the controller */
 #televisionScreen{
     margin-top: -2em;
-    height: 60vh;
+    height: 70vh;
     width: 72vw;
     display: flex;
+    border: solid 2px white;
 }
 
 /* TV screen section to show the channels */
@@ -55,7 +56,7 @@ body{
 
 /* TV base section */
 #televisionBase{
-    height: 25vh;
+    height: 10vh;
     width: 75vw;
     display: flex;
     flex-direction: column;
@@ -66,7 +67,7 @@ body{
 /* TV base handler part (black column) */
 #televisionHolder{
     background-color: black;
-    height: 20vh;
+    height: 10vh;
     width: 5vw;
 }
 
@@ -144,6 +145,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/* Style for the power button when you pass the mouse on them */
+#powerButton:hover{
+    background-color: rgb(241, 45, 45);
+    transition: 0.5s;
 }
 
 /* Style for the home button on the remote controller */
@@ -203,7 +212,7 @@ body{
 
 /* Style for the buttons from 1 to 9 to change channel on the remote controller */
 .channelButtons{
-    margin: 1em;
+    margin: 0.8em;
     border-radius: 50%;
     height: 2em;
     width: 2em;
@@ -211,6 +220,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/* Style for the buttons from 1 to 9 when you pass the mouse on them */
+.channelButtons:hover{
+    background-color: rgb(110, 108, 108);
+    transition: 0.5s;
 }
 
 /* Style for the icons inside the channel number buttons on the remote controller */
@@ -221,4 +238,46 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Initial state for the TV - Is off */
+.screenOff{
+    background-color: rgb(31, 30, 30);
+}
+
+/* List of style classes for changing screen content */
+.channel1{
+    background-color: brown;
+}
+
+.channel2{
+    background-color: red;
+}
+
+.channel3{
+    background-color: orange;
+}
+
+.channel4{
+    background-color: yellow;
+}
+
+.channel5{
+    background-color: green;
+}
+
+.channel6{
+    background-color: blue;
+}
+
+.channel7{
+    background-color: blueviolet;
+}
+
+.channel8{
+    background-color: grey;
+}
+
+.channel9{
+    background-color: gold;
 }
