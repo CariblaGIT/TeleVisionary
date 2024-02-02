@@ -191,6 +191,14 @@ body{
     border-top: 1.25em solid grey;
 }
 
+.arrowDown:hover{
+    border-top: 1.25em solid rgb(110, 108, 108);
+}
+
+.arrowUp:hover{
+    border-bottom: 1.25em solid rgb(110, 108, 108);
+}
+
 /* Same features shared for the texts on the controller in relation with channel and volume */
 #volumeTag, #channelTag{
     display: flex;
