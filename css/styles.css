@@ -78,6 +78,36 @@ body{
     width: 30vw;
 }
 
+#info{
+    background-color: rgba(128, 128, 128, 0.618);
+    height: 10vh;
+    width: 72vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#channelText{
+    background-color: blue;
+    color:rgba(255, 255, 255, 0.618);
+    height: 10vh;
+    width: 20vw;
+}
+
+#actualTime{
+    background-color: cyan;
+    color:rgba(255, 255, 255, 0.618);
+    height: 10vh;
+    width: 15vw;
+}
+
+#actualDate{
+    background-color: darkblue;
+    color:rgba(255, 255, 255, 0.618);
+    height: 10vh;
+    width: 15vw;
+}
+
 /* === SECTION CSS FOR THE REMOTE CONTROLLER === */
 
 /* Remote controller parent */
@@ -180,6 +210,7 @@ body{
     border-left: 1.25em solid transparent;
     border-right: 1.25em solid transparent;
     border-bottom: 1.25em solid grey;
+    transition: 0.5s;
 }
 
 /* Style for making a dwon arrow with CSS for volume and channel controllers on the remote controller*/
@@ -189,14 +220,19 @@ body{
     border-left: 1.25em solid transparent;
     border-right: 1.25em solid transparent;
     border-top: 1.25em solid grey;
+    transition: 0.5s;
 }
 
+/* Style for the down arrow buttons when you pass the mouse on them */
 .arrowDown:hover{
     border-top: 1.25em solid rgb(110, 108, 108);
+    transition: 0.5s;
 }
 
+/* Style for the up arrow buttons when you pass the mouse on them */
 .arrowUp:hover{
     border-bottom: 1.25em solid rgb(110, 108, 108);
+    transition: 0.5s;
 }
 
 /* Same features shared for the texts on the controller in relation with channel and volume */

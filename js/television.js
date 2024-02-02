@@ -14,9 +14,13 @@ let arraychannelButtons = Array.from(channelButtons);
 // Saving screen HTML element on a variable
 const screen = document.getElementById("televisionScreen");
 
+// === SETTING GLOBAL VARIABLES FOR THE INTERACTIONS ===
+
 // Global variable to know the actual state of the screen and the last watched channel
 let lastChannel = "channel1";
 let statusTV = false;
+
+// === ONCLICK LISTENERS FOR ALL THE BUTTONS ===
 
 // Power button OnClickListener function 
 onOffButton.addEventListener("click", () => {
@@ -50,6 +54,8 @@ arraychannelButtons.map(
         })
     }
 );
+
+// === FUNCTIONS FOR THE LISTENERS TO ACCESS GLOBAL VARIABLES ===
 
 // Function to swap Up the channel
 function SwapUpChannel(screenState){
@@ -97,4 +103,35 @@ function switchOnOffTV(isOnOffTV){
 // Function called to save the channel, to restore the last channel when you switch off the TV
 function saveActualChannel(channel){
     lastChannel = channel;
+}
+
+// === UTILITY FUNCTIONS ===
+
+// Function to get the actual hour in format HH:MM
+function getTimeInHoursMins(){
+    const now = new Date();
+    let mins = now.getMinutes().toString();
+    let hours = now.getHours().toString();
+    if (mins.length == 1){
+        mins = "0"+mins;
+    }
+    if (hours.length == 1){
+        mins = "0"+mins;
+    }
+    return (hours+":"+mins);
+}
+
+// Function to get the actual date in format DD/MM/YYYY
+function getDate(){
+    const now = new Date();
+    let day = now.getDate().toString();
+    let year = now.getFullYear().toString();
+    let month = (now.getMonth() + 1).toString();
+    if (day.length == 1){
+        day = "0"+day;
+    }
+    if (month.length == 1){
+        month = "0"+month;
+    }
+    return day+"/"+month+"/"+year;
 }
