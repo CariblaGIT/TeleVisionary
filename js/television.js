@@ -14,6 +14,12 @@ let arraychannelButtons = Array.from(channelButtons);
 // Saving screen HTML element on a variable
 const screen = document.getElementById("televisionScreen");
 
+// Saving channel, date and hour on screen HTML elements on variables
+const channelText = document.getElementById("channelText");
+const hourText = document.getElementById("actualTime");
+const dateText = document.getElementById("actualDate");
+const infoContainer = document.getElementById("info");
+
 // === SETTING GLOBAL VARIABLES FOR THE INTERACTIONS ===
 
 // Global variable to know the actual state of the screen and the last watched channel
@@ -22,35 +28,55 @@ let statusTV = false;
 
 // === ONCLICK LISTENERS FOR ALL THE BUTTONS ===
 
-// Power button OnClickListener function 
+// Power button OnClickListener function and the info interactions around it
 onOffButton.addEventListener("click", () => {
     screen.classList.remove(screen.classList[screen.classList.length - 1]);
     let channelClass = switchOnOffTV(statusTV);
     screen.classList.add(channelClass);
+    if(channelClass != "screenOff"){
+        showInfoInScreen();
+        setDateIntoScreen();
+        setHourIntoScreen();
+    }
 })
 
-// Up channel button OnClickListener function 
+// Up channel button OnClickListener function and the info interactions around it
 arrowUpChannelButton.addEventListener("click", () => {
-    let channelClass = SwapUpChannel(screen.classList[screen.classList.length - 1]);
-    screen.classList.remove(screen.classList[screen.classList.length - 1]);
-    screen.classList.add(channelClass);
+    if(statusTV){
+        let channelClass = SwapUpChannel(screen.classList[screen.classList.length - 1]);
+        screen.classList.remove(screen.classList[screen.classList.length - 1]);
+        screen.classList.add(channelClass);
+        showInfoInScreen();
+        setDateIntoScreen();
+        setHourIntoScreen();
+    }
 })
 
-// Down channel button OnClickListener function 
+// Down channel button OnClickListener function and the info interactions around it
 arrowDownChannelButton.addEventListener("click", () => {
-    let channelClass = SwapDownChannel(screen.classList[screen.classList.length - 1]);
-    screen.classList.remove(screen.classList[screen.classList.length - 1]);
-    screen.classList.add(channelClass);
+    if(statusTV){
+        let channelClass = SwapDownChannel(screen.classList[screen.classList.length - 1]);
+        screen.classList.remove(screen.classList[screen.classList.length - 1]);
+        screen.classList.add(channelClass);
+        showInfoInScreen();
+        setDateIntoScreen();
+        setHourIntoScreen();
+    }
 })
 
-// Mapping all the channel buttons and setting OnClickListener to change between channels
+// Mapping all the channel buttons and setting OnClickListener to change between channels and the info interactions around it
 arraychannelButtons.map(
     item => {
         item.addEventListener("click", (e) => {
-            screen.classList.remove(screen.classList[screen.classList.length - 1]);
-            let channelClass = "channel"+e.target.id;
-            saveActualChannel(channelClass);
-            screen.classList.add(channelClass);
+            if(statusTV){
+                screen.classList.remove(screen.classList[screen.classList.length - 1]);
+                let channelClass = "channel"+e.target.id;
+                saveActualChannel(channelClass);
+                screen.classList.add(channelClass);
+                showInfoInScreen();
+                setDateIntoScreen();
+                setHourIntoScreen();
+            }
         })
     }
 );
@@ -134,4 +160,24 @@ function getDate(){
         month = "0"+month;
     }
     return day+"/"+month+"/"+year;
+}
+
+// Function to set the date info into his container refresing the data
+function setDateIntoScreen(){
+    let date = getDate();
+    dateText.innerHTML = date;
+}
+
+// Function to set the hour info into his container refresing the data
+function setHourIntoScreen(){
+    let time = getTimeInHoursMins();
+    hourText.innerHTML = time;
+}
+
+// Function to show the info container to show info and make it dissapear 3 secs after is shown
+function showInfoInScreen(){
+    infoContainer.style.visibility = "visible";
+    setTimeout(function() {
+        infoContainer.style.visibility = "hidden";
+      }, 3000);
 }

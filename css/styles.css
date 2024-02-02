@@ -45,6 +45,7 @@ body{
     height: 70vh;
     width: 72vw;
     display: flex;
+    position: relative;
     border: solid 2px white;
 }
 
@@ -78,34 +79,46 @@ body{
     width: 30vw;
 }
 
+/* Info container to show data to user about the time or the actual channel */
 #info{
     background-color: rgba(128, 128, 128, 0.618);
     height: 10vh;
     width: 72vw;
+    visibility: hidden;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     align-items: center;
+    z-index: 1;
 }
 
+/* Box for the name channel on the info container */
 #channelText{
-    background-color: blue;
     color:rgba(255, 255, 255, 0.618);
     height: 10vh;
     width: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Box for the actual hour on the info container */
 #actualTime{
-    background-color: cyan;
     color:rgba(255, 255, 255, 0.618);
     height: 10vh;
     width: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Box for the actual date on the info container */
 #actualDate{
-    background-color: darkblue;
     color:rgba(255, 255, 255, 0.618);
     height: 10vh;
     width: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* === SECTION CSS FOR THE REMOTE CONTROLLER === */
