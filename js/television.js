@@ -14,13 +14,14 @@ let arraychannelButtons = Array.from(channelButtons);
 // Saving screen HTML element on a variable
 const screen = document.getElementById("televisionScreen");
 
-// Global variable to know the actual state of the screen
-let screenState = screen.classList;
+// Global variable to know the actual state of the screen and the last watched channel
+let lastChannel = "channel1";
+let statusTV = false;
 
 // Power button OnClickListener function 
 onOffButton.addEventListener("click", () => {
     screen.classList.remove(screen.classList[screen.classList.length - 1]);
-    let channelClass = "screenOff";
+    let channelClass = switchOnOffTV(statusTV);
     screen.classList.add(channelClass);
 })
 
@@ -38,19 +39,13 @@ arrowDownChannelButton.addEventListener("click", () => {
     screen.classList.add(channelClass);
 })
 
-// Power button OnClickListener function 
-onOffButton.addEventListener("click", () => {
-    screen.classList.remove(screen.classList[screen.classList.length - 1]);
-    let channelClass = "screenOff";
-    screen.classList.add(channelClass);
-})
-
 // Mapping all the channel buttons and setting OnClickListener to change between channels
 arraychannelButtons.map(
     item => {
         item.addEventListener("click", (e) => {
             screen.classList.remove(screen.classList[screen.classList.length - 1]);
             let channelClass = "channel"+e.target.id;
+            saveActualChannel(channelClass);
             screen.classList.add(channelClass);
         })
     }
@@ -58,22 +53,48 @@ arraychannelButtons.map(
 
 // Function to swap Up the channel
 function SwapUpChannel(screenState){
-    let number = parseInt(screenState.slice(-1));
-    let channelToSwap;
-    number == 9
-        ? channelToSwap = "channel1"
-        : channelToSwap = "channel"+(number+1);
-    console.log(channelToSwap);
-    return channelToSwap;
+    if(statusTV){
+        let number = parseInt(screenState.slice(-1));
+        let channelToSwap;
+        number == 9
+            ? channelToSwap = "channel1"
+            : channelToSwap = "channel"+(number+1);
+        lastChannel = channelToSwap;
+        return channelToSwap;
+    } else {
+        return "screenOff";
+    }
 }
 
 // Function to swap Down the channel
 function SwapDownChannel(screenState){
-    let number = parseInt(screenState.slice(-1));
-    let channelToSwap;
-    number == 1
-        ? channelToSwap = "channel9"
-        : channelToSwap = "channel"+(number-1);
-    console.log(channelToSwap);
-    return channelToSwap;
+    if(statusTV){
+        let number = parseInt(screenState.slice(-1));
+        let channelToSwap;
+        number == 1
+            ? channelToSwap = "channel9"
+            : channelToSwap = "channel"+(number-1);
+        lastChannel = channelToSwap;
+        return channelToSwap;
+    } else {
+        return "screenOff";
+    } 
+}
+
+// Function to check the boolean to control the TV to switch between On or Off
+function switchOnOffTV(isOnOffTV){
+    let stateToGive;
+    if (isOnOffTV){
+        stateToGive = "screenOff";
+        statusTV = false;
+    } else {
+        stateToGive = lastChannel;
+        statusTV = true;
+    }
+    return stateToGive;
+}
+
+// Function called to save the channel, to restore the last channel when you switch off the TV
+function saveActualChannel(channel){
+    lastChannel = channel;
 }
