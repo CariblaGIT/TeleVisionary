@@ -19,21 +19,20 @@
             <div id="television">
                 <!-- TV Screen, with parent as border and content as child to show the web functionalities -->
                 <div id="televisionScreenBase">
-                    <div id="televisionScreen" class="screenOff">
-                        <!-- Container to show info about the channel and time to user -->
-                        <div id="info">
-                            <div id="channelText"></div>
-                            <div id="actualTime"></div>
-                            <div id="actualDate"></div>
-                        </div>
-                        <!-- Container to show other info about the TV to user -->
-                        <div id="screenOtherInfo">
-                            <!-- Container to show the volume control on the TV to user, with a bar and a number from 1 to 100 -->
-                            <div id="volumeContainer">  
-                                <div id="volumeNumber"></div>
-                                <div id="volumeBar">
-                                    <div id="barUpDown"></div>
-                                </div>
+                    <video id="televisionScreen" class="screenOff" autoplay loop></video>
+                    <!-- Container to show info about the channel and time to user -->
+                    <div id="info">
+                        <div id="channelText"></div>
+                        <div id="actualTime"></div>
+                        <div id="actualDate"></div>
+                    </div>
+                    <!-- Container to show other info about the TV to user -->
+                    <div id="screenOtherInfo">
+                        <!-- Container to show the volume control on the TV to user, with a bar and a number from 1 to 10 -->
+                        <div id="volumeContainer">  
+                            <div id="volumeNumber"></div>
+                            <div id="volumeBar">
+                                <div id="barUpDown"></div>
                             </div>
                         </div>
                     </div>

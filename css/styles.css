@@ -48,6 +48,7 @@ body{
     flex-direction: column;
     position: relative;
     border: solid 2px white;
+    z-index: 1;
 }
 
 /* TV screen section to show the channels */
@@ -88,8 +89,10 @@ body{
     visibility: hidden;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    z-index: 1;
+    align-items: flex-start;
+    z-index: 5;
+    position: absolute;
+    top: 5vh;
 }
 
 /* Box for the name channel on the info container */
@@ -129,17 +132,18 @@ body{
 #screenOtherInfo{
     height: 50vh;
     width: 72vw;
-    z-index: 1;
-    visibility: hidden;
+    z-index: 5;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: absolute;
 }
 
 /* Volume container to show data to user about the volume control */
 #volumeContainer{
     height: 30vh;
     width: 20vw;
+    visibility: hidden;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -354,41 +358,4 @@ body{
 /* Initial state for the TV - Is off */
 .screenOff{
     background-color: rgb(31, 30, 30);
-}
-
-/* List of style classes for changing screen content */
-.channel1{
-    background-color: brown;
-}
-
-.channel2{
-    background-color: red;
-}
-
-.channel3{
-    background-color: orange;
-}
-
-.channel4{
-    background-color: yellow;
-}
-
-.channel5{
-    background-color: green;
-}
-
-.channel6{
-    background-color: blue;
-}
-
-.channel7{
-    background-color: blueviolet;
-}
-
-.channel8{
-    background-color: grey;
-}
-
-.channel9{
-    background-color: gold;
 }

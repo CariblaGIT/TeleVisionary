@@ -11,6 +11,8 @@ const arrowDownChannelButton = document.getElementById("arrowDownChannel");
 // Getting the buttons from the controller, for changing volume
 const arrowUpVolumeButton = document.getElementById("arrowUpVolume");
 const arrowDownVolumeButton = document.getElementById("arrowDownVolume");
+
+// Flag to reset the timeout of clicking repeated buttons of volume and channels
 let controlVolumeButtonsTimeout;
 let controlChannelButtonsTimeout;
 
@@ -39,6 +41,46 @@ let statusTV = false;
 let volume = 50;
 const volumeUnit = 0.3;
 
+// Data from channels
+const channels = [
+    channel1 = {
+        "name": "channel1",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    },
+    channel2 = {
+        "name": "channel2",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+    },
+    channel3 = {
+        "name": "channel3",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+    },
+    channel4 = {
+        "name": "channel4",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+    },
+    channel5 = {
+        "name": "channel5",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+    },
+    channel6 = {
+        "name": "channel6",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+    },
+    channel7 = {
+        "name": "channel7",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+    },
+    channel8 = {
+        "name": "channel8",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+    },
+    channel9 = {
+        "name": "channel9",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+    }
+];
+
 // === ONCLICK LISTENERS FOR ALL THE BUTTONS ===
 
 // Power button OnClickListener function and the info interactions around it
@@ -51,14 +93,17 @@ onOffButton.addEventListener("click", () => {
         setDateIntoScreen();
         setHourIntoScreen();
         setActualChannelIntoScreen();
+        setVideoOnScreen(channelClass);
     } else {
         hideTelevisionGUI();
+        removeContentOnScreen();
     }
 })
 
 // Up channel button OnClickListener function and the info interactions around it
 arrowUpChannelButton.addEventListener("click", () => {
     if(statusTV){
+        hideTelevisionGUI();
         let channelClass = SwapUpChannel(screen.classList[screen.classList.length - 1]);
         screen.classList.remove(screen.classList[screen.classList.length - 1]);
         screen.classList.add(channelClass);
@@ -66,12 +111,14 @@ arrowUpChannelButton.addEventListener("click", () => {
         setDateIntoScreen();
         setHourIntoScreen();
         setActualChannelIntoScreen();
+        setVideoOnScreen(channelClass);
     }
 })
 
 // Down channel button OnClickListener function and the info interactions around it
 arrowDownChannelButton.addEventListener("click", () => {
     if(statusTV){
+        hideTelevisionGUI();
         let channelClass = SwapDownChannel(screen.classList[screen.classList.length - 1]);
         screen.classList.remove(screen.classList[screen.classList.length - 1]);
         screen.classList.add(channelClass);
@@ -79,12 +126,14 @@ arrowDownChannelButton.addEventListener("click", () => {
         setDateIntoScreen();
         setHourIntoScreen();
         setActualChannelIntoScreen();
+        setVideoOnScreen(channelClass);
     }
 })
 
 // Up channel button OnClickListener function and the info interactions around it
 arrowUpVolumeButton.addEventListener("click", () => {
     if(statusTV){
+        hideTelevisionGUI();
         showVolumeInScreen();
         GoUpVolume();
     }
@@ -93,6 +142,7 @@ arrowUpVolumeButton.addEventListener("click", () => {
 // Down channel button OnClickListener function and the info interactions around it
 arrowDownVolumeButton.addEventListener("click", () => {
     if(statusTV){
+        hideTelevisionGUI();
         showVolumeInScreen();
         GoDownVolume();
     }
@@ -103,6 +153,7 @@ arraychannelButtons.map(
     item => {
         item.addEventListener("click", (e) => {
             if(statusTV){
+                hideTelevisionGUI();
                 screen.classList.remove(screen.classList[screen.classList.length - 1]);
                 let channelClass = "channel"+e.target.id;
                 saveActualChannel(channelClass);
@@ -111,6 +162,7 @@ arraychannelButtons.map(
                 setDateIntoScreen();
                 setHourIntoScreen();
                 setActualChannelIntoScreen();
+                setVideoOnScreen(channelClass);
             }
         })
     }
@@ -158,6 +210,7 @@ function GoUpVolume(){
     volume = increasedVolume;
     volumeBar.style.height = barHeight;
     volumeNumber.innerHTML = volume;
+    setVolumeIntoPlayer(volume);
 }
 
 // Function to decrease the volume
@@ -170,6 +223,7 @@ function GoDownVolume(){
     volume = decreasedVolume;
     volumeBar.style.height = barHeight;
     volumeNumber.innerHTML = volume;
+    setVolumeIntoPlayer(volume);
 }
 
 // Function to check the boolean to control the TV to switch between On or Off
@@ -233,8 +287,9 @@ function setHourIntoScreen(){
     hourText.innerHTML = time;
 }
 
+// Function to set the actual channel into his container refresing the data
 function setActualChannelIntoScreen(){
-    channelText.innerHTML = lastChannel;
+    channelText.innerHTML = lastChannel.toUpperCase();
 }
 
 // Function to show the info container to show info and make it dissapear 3 secs after is shown
@@ -255,9 +310,30 @@ function showVolumeInScreen(){
       }, 3000);
 }
 
+// Function to hide all interface elements on screen and removing the timeouts of the buttons
 function hideTelevisionGUI(){
     clearTimeout(controlVolumeButtonsTimeout);
     clearTimeout(controlChannelButtonsTimeout);
     volumeContainer.style.visibility = "hidden";
     infoContainer.style.visibility = "hidden";
+}
+
+// Function to change the url in the video player element
+function setVideoOnScreen(channelInput){
+    for (let channel in channels){
+        if(channels[channel].name == channelInput){
+            let url = channels[channel].url;
+            screen.src = url;
+        }
+    }
+}
+
+// Function to remove the content inside the TV
+function removeContentOnScreen(){
+    screen.src = "";
+}
+
+// Function to set the variable volume into the player
+function setVolumeIntoPlayer(volume){
+    screen.volume = (volume/100);
 }
