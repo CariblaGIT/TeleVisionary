@@ -12,6 +12,8 @@ const arrowDownChannelButton = document.getElementById("arrowDownChannel");
 const arrowUpVolumeButton = document.getElementById("arrowUpVolume");
 const arrowDownVolumeButton = document.getElementById("arrowDownVolume");
 
+const homeButton = document.getElementById("homeButton");
+
 // Flag to reset the timeout of clicking repeated buttons of volume and channels
 let controlVolumeButtonsTimeout;
 let controlChannelButtonsTimeout;
@@ -96,6 +98,7 @@ onOffButton.addEventListener("click", () => {
         setVideoOnScreen(channelClass);
     } else {
         hideTelevisionGUI();
+        removeMenuFromTV();
         removeContentOnScreen();
     }
 })
@@ -104,6 +107,7 @@ onOffButton.addEventListener("click", () => {
 arrowUpChannelButton.addEventListener("click", () => {
     if(statusTV){
         hideTelevisionGUI();
+        removeMenuFromTV();
         let channelClass = SwapUpChannel(screen.classList[screen.classList.length - 1]);
         screen.classList.remove(screen.classList[screen.classList.length - 1]);
         screen.classList.add(channelClass);
@@ -119,6 +123,7 @@ arrowUpChannelButton.addEventListener("click", () => {
 arrowDownChannelButton.addEventListener("click", () => {
     if(statusTV){
         hideTelevisionGUI();
+        removeMenuFromTV();
         let channelClass = SwapDownChannel(screen.classList[screen.classList.length - 1]);
         screen.classList.remove(screen.classList[screen.classList.length - 1]);
         screen.classList.add(channelClass);
@@ -145,6 +150,13 @@ arrowDownVolumeButton.addEventListener("click", () => {
         hideTelevisionGUI();
         showVolumeInScreen();
         GoDownVolume();
+    }
+})
+
+homeButton.addEventListener("click", () => {
+    if(statusTV){
+        hideTelevisionGUI();
+        homeButtonInteraction();
     }
 })
 
@@ -336,4 +348,15 @@ function removeContentOnScreen(){
 // Function to set the variable volume into the player
 function setVolumeIntoPlayer(volume){
     screen.volume = (volume/100);
+}
+
+// Function to set the TV menu on the screen 
+function homeButtonInteraction(){
+    screen.src = "";
+    screen.poster = "../img/menu.jpg";
+}
+
+// Function to remove the TV menu off the screen
+function removeMenuFromTV(){
+    screen.removeAttribute("poster");
 }

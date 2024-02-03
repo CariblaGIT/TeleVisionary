@@ -260,6 +260,14 @@ body{
     border-radius: 50%;
     height: 2em;
     width: 2em;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/* Style for the home button on the remote controller */
+#homeButton:hover{
+    background-color: rgb(110, 108, 108);
+    transition: 0.5s;
 }
 
 /* Style for the icons inside the home and power button on the remote controller */
