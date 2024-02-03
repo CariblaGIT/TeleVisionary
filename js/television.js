@@ -50,6 +50,7 @@ onOffButton.addEventListener("click", () => {
         showInfoInScreen();
         setDateIntoScreen();
         setHourIntoScreen();
+        setActualChannelIntoScreen();
     } else {
         hideTelevisionGUI();
     }
@@ -64,6 +65,7 @@ arrowUpChannelButton.addEventListener("click", () => {
         showInfoInScreen();
         setDateIntoScreen();
         setHourIntoScreen();
+        setActualChannelIntoScreen();
     }
 })
 
@@ -76,6 +78,7 @@ arrowDownChannelButton.addEventListener("click", () => {
         showInfoInScreen();
         setDateIntoScreen();
         setHourIntoScreen();
+        setActualChannelIntoScreen();
     }
 })
 
@@ -107,6 +110,7 @@ arraychannelButtons.map(
                 showInfoInScreen();
                 setDateIntoScreen();
                 setHourIntoScreen();
+                setActualChannelIntoScreen();
             }
         })
     }
@@ -227,6 +231,10 @@ function setDateIntoScreen(){
 function setHourIntoScreen(){
     let time = getTimeInHoursMins();
     hourText.innerHTML = time;
+}
+
+function setActualChannelIntoScreen(){
+    channelText.innerHTML = lastChannel;
 }
 
 // Function to show the info container to show info and make it dissapear 3 secs after is shown
