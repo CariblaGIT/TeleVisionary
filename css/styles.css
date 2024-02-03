@@ -45,6 +45,7 @@ body{
     height: 70vh;
     width: 72vw;
     display: flex;
+    flex-direction: column;
     position: relative;
     border: solid 2px white;
 }
@@ -119,6 +120,53 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Container to other info in screen */
+#screenOtherInfo{
+    height: 50vh;
+    width: 72vw;
+    z-index: 1;
+    visibility: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Volume container to show data to user about the volume control */
+#volumeContainer{
+    height: 30vh;
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Number to show how much high is the volume */
+#volumeNumber{
+    margin-left: 2em; 
+    height: 8vh;
+    width: 6vw;
+    color: rgba(255, 255, 255, 0.618);
+}
+
+/* Volume bar background container */
+#volumeBar{
+    margin: 2em 1em 2em 1em;
+    height: 30vh;
+    width: 2vw;
+    background: #999;
+    border-radius: 1em;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Volume bar to go up or down related with the user interactions with the controller */
+#barUpDown{
+    height: 15vh;
+    width: 2vw;
+    background: #FFF;
+    border-radius: 1em;
 }
 
 /* === SECTION CSS FOR THE REMOTE CONTROLLER === */

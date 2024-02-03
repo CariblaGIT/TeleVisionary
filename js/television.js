@@ -8,6 +8,10 @@ const onOffButton = document.getElementById("powerButton");
 const arrowUpChannelButton = document.getElementById("arrowUpChannel");
 const arrowDownChannelButton = document.getElementById("arrowDownChannel");
 
+// Getting the buttons from the controller, for changing volume
+const arrowUpVolumeButton = document.getElementById("arrowUpVolume");
+const arrowDownVolumeButton = document.getElementById("arrowDownVolume");
+
 // The buttonChannel HTMLCollection, converted into array
 let arraychannelButtons = Array.from(channelButtons);
 
@@ -19,12 +23,19 @@ const channelText = document.getElementById("channelText");
 const hourText = document.getElementById("actualTime");
 const dateText = document.getElementById("actualDate");
 const infoContainer = document.getElementById("info");
+const volumeContainer = document.getElementById("volumeContainer");
+const volumeNumber = document.getElementById("volumeNumber");
+const volumeBar = document.getElementById("barUpDown");
 
 // === SETTING GLOBAL VARIABLES FOR THE INTERACTIONS ===
 
 // Global variable to know the actual state of the screen and the last watched channel
 let lastChannel = "channel1";
 let statusTV = false;
+
+// Global variables for the volume bar and the unit of volume inside the ba
+let volume = 50;
+const volumeUnit = 0.3;
 
 // === ONCLICK LISTENERS FOR ALL THE BUTTONS ===
 
@@ -61,6 +72,22 @@ arrowDownChannelButton.addEventListener("click", () => {
         showInfoInScreen();
         setDateIntoScreen();
         setHourIntoScreen();
+    }
+})
+
+// Up channel button OnClickListener function and the info interactions around it
+arrowUpVolumeButton.addEventListener("click", () => {
+    if(statusTV){
+        showVolumeInScreen();
+        GoUpVolume();
+    }
+})
+
+// Down channel button OnClickListener function and the info interactions around it
+arrowDownVolumeButton.addEventListener("click", () => {
+    if(statusTV){
+        showVolumeInScreen();
+        GoDownVolume();
     }
 })
 
@@ -111,6 +138,30 @@ function SwapDownChannel(screenState){
     } else {
         return "screenOff";
     } 
+}
+
+// Function to increase the volume
+function GoUpVolume(){
+    let increasedVolume;
+    volume == 100
+        ? increasedVolume = 100
+        : increasedVolume = volume + 1
+    let barHeight = (increasedVolume * volumeUnit).toString()+"vh";
+    volume = increasedVolume;
+    volumeBar.style.height = barHeight;
+    volumeNumber.innerHTML = volume;
+}
+
+// Function to decrease the volume
+function GoDownVolume(){
+    let decreasedVolume;
+    volume == 0
+        ? decreasedVolume = 0
+        : decreasedVolume = volume - 1
+    let barHeight = (decreasedVolume * volumeUnit).toString()+"vh";
+    volume = decreasedVolume;
+    volumeBar.style.height = barHeight;
+    volumeNumber.innerHTML = volume;
 }
 
 // Function to check the boolean to control the TV to switch between On or Off
@@ -180,4 +231,12 @@ function showInfoInScreen(){
     setTimeout(function() {
         infoContainer.style.visibility = "hidden";
       }, 3000);
+}
+
+// Function to show the volume container to show info and make it dissapear 5 secs after is shown
+function showVolumeInScreen(){
+    volumeContainer.style.visibility = "visible";
+    setTimeout(function() {
+        volumeContainer.style.visibility = "hidden";
+      }, 5000);
 }
