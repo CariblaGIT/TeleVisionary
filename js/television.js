@@ -11,6 +11,8 @@ const arrowDownChannelButton = document.getElementById("arrowDownChannel");
 // Getting the buttons from the controller, for changing volume
 const arrowUpVolumeButton = document.getElementById("arrowUpVolume");
 const arrowDownVolumeButton = document.getElementById("arrowDownVolume");
+let controlVolumeButtonsTimeout;
+let controlChannelButtonsTimeout;
 
 // The buttonChannel HTMLCollection, converted into array
 let arraychannelButtons = Array.from(channelButtons);
@@ -48,6 +50,8 @@ onOffButton.addEventListener("click", () => {
         showInfoInScreen();
         setDateIntoScreen();
         setHourIntoScreen();
+    } else {
+        hideTelevisionGUI();
     }
 })
 
@@ -227,16 +231,25 @@ function setHourIntoScreen(){
 
 // Function to show the info container to show info and make it dissapear 3 secs after is shown
 function showInfoInScreen(){
+    clearTimeout(controlChannelButtonsTimeout);
     infoContainer.style.visibility = "visible";
-    setTimeout(function() {
+    controlChannelButtonsTimeout = setTimeout(function() {
         infoContainer.style.visibility = "hidden";
       }, 3000);
 }
 
 // Function to show the volume container to show info and make it dissapear 5 secs after is shown
 function showVolumeInScreen(){
+    clearTimeout(controlVolumeButtonsTimeout);
     volumeContainer.style.visibility = "visible";
-    setTimeout(function() {
+    controlVolumeButtonsTimeout = setTimeout(function() {
         volumeContainer.style.visibility = "hidden";
-      }, 5000);
+      }, 3000);
+}
+
+function hideTelevisionGUI(){
+    clearTimeout(controlVolumeButtonsTimeout);
+    clearTimeout(controlChannelButtonsTimeout);
+    volumeContainer.style.visibility = "hidden";
+    infoContainer.style.visibility = "hidden";
 }

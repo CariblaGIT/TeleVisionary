@@ -95,6 +95,7 @@ body{
 /* Box for the name channel on the info container */
 #channelText{
     color:rgba(255, 255, 255, 0.618);
+    font-size: 2.5em;
     height: 10vh;
     width: 20vw;
     display: flex;
@@ -105,6 +106,7 @@ body{
 /* Box for the actual hour on the info container */
 #actualTime{
     color:rgba(255, 255, 255, 0.618);
+    font-size: 2.5em;
     height: 10vh;
     width: 15vw;
     display: flex;
@@ -115,6 +117,7 @@ body{
 /* Box for the actual date on the info container */
 #actualDate{
     color:rgba(255, 255, 255, 0.618);
+    font-size: 2.5em;
     height: 10vh;
     width: 15vw;
     display: flex;
@@ -145,6 +148,7 @@ body{
 /* Number to show how much high is the volume */
 #volumeNumber{
     margin-left: 2em; 
+    font-size: 2.5em;
     height: 8vh;
     width: 6vw;
     color: rgba(255, 255, 255, 0.618);
