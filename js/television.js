@@ -15,11 +15,12 @@ const arrowDownVolumeButton = document.getElementById("arrowDownVolume");
 // Getting the buttons from the controller for the TV settings
 const homeButton = document.getElementById("homeButton");
 const muteButton = document.getElementById("muteButton");
-// const guideButton = document.getElementById("guideButton");
+const guideButton = document.getElementById("guideButton");
 
 // Flag to reset the timeout of clicking repeated buttons of volume and channels
 let controlVolumeButtonsTimeout;
 let controlChannelButtonsTimeout;
+let controlGuideButtonTimeout;
 
 // The buttonChannel HTMLCollection, converted into array
 let arraychannelButtons = Array.from(channelButtons);
@@ -35,6 +36,7 @@ const infoContainer = document.getElementById("info");
 const volumeContainer = document.getElementById("volumeContainer");
 const volumeNumber = document.getElementById("volumeNumber");
 const volumeBar = document.getElementById("barUpDown");
+const guideListContainer = document.getElementById("guideMenu");
 
 // === SETTING GLOBAL VARIABLES FOR THE INTERACTIONS ===
 
@@ -51,39 +53,48 @@ let isMutedTV = false;
 const channels = [
     channel1 = {
         "name": "channel1",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        "actualContentName": "The Big Buck Bunny"
     },
     channel2 = {
         "name": "channel2",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        "actualContentName": "The Elephants Dream"
     },
     channel3 = {
         "name": "channel3",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        "actualContentName": "For Bigger Blazes"
     },
     channel4 = {
         "name": "channel4",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        "actualContentName": "For Bigger Escapes"
     },
     channel5 = {
         "name": "channel5",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+        "actualContentName": "For Bigger Fun"
     },
     channel6 = {
         "name": "channel6",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+        "actualContentName": "For Bigger Joyrides"
     },
     channel7 = {
         "name": "channel7",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+        "actualContentName": "For Bigger Meltdowns"
     },
     channel8 = {
         "name": "channel8",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+        "actualContentName": "Sintel"
     },
     channel9 = {
         "name": "channel9",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+        "actualContentName": "Need for Speed"
     }
 ];
 
@@ -98,6 +109,7 @@ onOffButton.addEventListener("click", () => {
         showInfoInScreen();
         setDateIntoScreen();
         setHourIntoScreen();
+        fillGuideList();
         setActualChannelIntoScreen();
         setVideoOnScreen(channelClass);
     } else {
@@ -171,6 +183,14 @@ muteButton.addEventListener("click", () => {
         hideTelevisionGUI();
         showVolumeInScreen();
         muteVolumePlayer(isMutedTV);
+    }
+})
+
+// Guide button OnClickListener function to show a list of channels with their content
+guideButton.addEventListener("click", () => {
+    if(statusTV){
+        hideTelevisionGUI();
+        showGuideInScreen();
     }
 })
 
@@ -356,12 +376,22 @@ function showVolumeInScreen(){
       }, 3000);
 }
 
+function showGuideInScreen(){
+    clearTimeout(controlGuideButtonTimeout);
+    guideListContainer.style.visibility = "visible";
+    controlGuideButtonTimeout = setTimeout(function() {
+        guideListContainer.style.visibility = "hidden";
+      }, 3000);
+}
+
 // Function to hide all interface elements on screen and removing the timeouts of the buttons
 function hideTelevisionGUI(){
     clearTimeout(controlVolumeButtonsTimeout);
     clearTimeout(controlChannelButtonsTimeout);
+    clearTimeout(controlGuideButtonTimeout);
     volumeContainer.style.visibility = "hidden";
     infoContainer.style.visibility = "hidden";
+    guideListContainer.style.visibility = "hidden"
 }
 
 // Function to change the url in the video player element
@@ -393,4 +423,15 @@ function homeButtonInteraction(){
 // Function to remove the TV menu off the screen
 function removeMenuFromTV(){
     screen.removeAttribute("poster");
+}
+
+// Function to fill guide list with channel list info
+function fillGuideList(){
+    for (let channel in channels){
+        guideListContainer.innerHTML += "<div class='rowGuide col-12'><div id='channelName' class='col-6'>"+channels[channel].name.toUpperCase()+"</div><div id='channelActualContent' class='col-6'>"+channels[channel].actualContentName+"</div></div>";
+    }
+}
+
+function unfillGuideList(){
+    guideListContainer.innerHTML = "";
 }

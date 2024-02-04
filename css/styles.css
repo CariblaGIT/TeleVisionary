@@ -144,7 +144,7 @@ body{
 #volumeContainer{
     background-color: rgba(128, 128, 128, 0.618);
     height: 30vh;
-    width: 8vw;
+    width: 10vw;
     margin: 1em;
     border-radius: 0.5em;
     visibility: hidden;
@@ -186,6 +186,38 @@ body{
     width: 2vw;
     background: #FFF;
     border-radius: 1em;
+}
+
+/* Guide container to show data to user about the channel list */
+#guideMenu{
+    background-color: rgba(58, 58, 58, 0.618);
+    height: 70vh;
+    width: 69vw;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    z-index: 5;
+    position: absolute;
+    top: 5vh;
+}
+
+/* Box for the guide content */
+#channelName, #channelActualContent{
+    color:rgba(255, 255, 255, 0.618);
+    font-size: 1.5em;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rowGuide{
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
 }
 
 /* === SECTION CSS FOR THE REMOTE CONTROLLER === */
