@@ -41,7 +41,7 @@ const guideListContainer = document.getElementById("guideMenu");
 // === SETTING GLOBAL VARIABLES FOR THE INTERACTIONS ===
 
 // Global variable to know the actual state of the screen and the last watched channel
-let lastChannel = "channel1";
+let idLastChannel = "channel1";
 let statusTV = false;
 
 // Global variables for the volume bar and the unit of volume inside the ba
@@ -52,49 +52,58 @@ let isMutedTV = false;
 // Data from channels
 const channels = [
     channel1 = {
-        "name": "channel1",
+        "name": "La 1",
         "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        "actualContentName": "The Big Buck Bunny"
+        "actualContentName": "The Big Buck Bunny",
+        "id" : "channel1"
     },
     channel2 = {
-        "name": "channel2",
+        "name": "La 2",
         "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-        "actualContentName": "The Elephants Dream"
+        "actualContentName": "The Elephants Dream",
+        "id" : "channel2"
     },
     channel3 = {
-        "name": "channel3",
+        "name": "Antena 3",
         "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-        "actualContentName": "For Bigger Blazes"
+        "actualContentName": "For Bigger Blazes",
+        "id" : "channel3"
     },
     channel4 = {
-        "name": "channel4",
+        "name": "Cuatro",
         "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-        "actualContentName": "For Bigger Escapes"
+        "actualContentName": "For Bigger Escapes",
+        "id" : "channel4"
     },
     channel5 = {
-        "name": "channel5",
+        "name": "Telecinco",
         "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-        "actualContentName": "For Bigger Fun"
+        "actualContentName": "For Bigger Fun",
+        "id" : "channel5"
     },
     channel6 = {
-        "name": "channel6",
+        "name": "LaSexta",
         "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-        "actualContentName": "For Bigger Joyrides"
+        "actualContentName": "For Bigger Joyrides",
+        "id" : "channel6"
     },
     channel7 = {
-        "name": "channel7",
+        "name": "Teledeporte",
         "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
-        "actualContentName": "For Bigger Meltdowns"
+        "actualContentName": "For Bigger Meltdowns",
+        "id" : "channel7"
     },
     channel8 = {
-        "name": "channel8",
+        "name": "24H",
         "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-        "actualContentName": "Sintel"
+        "actualContentName": "Sintel",
+        "id" : "channel8"
     },
     channel9 = {
-        "name": "channel9",
+        "name": "Neox",
         "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
-        "actualContentName": "Need for Speed"
+        "actualContentName": "Need for Speed",
+        "id" : "channel9"
     }
 ];
 
@@ -225,7 +234,7 @@ function SwapUpChannel(screenState){
         number == 9
             ? channelToSwap = "channel1"
             : channelToSwap = "channel"+(number+1);
-        lastChannel = channelToSwap;
+        idLastChannel = channelToSwap;
         return channelToSwap;
     } else {
         return "screenOff";
@@ -240,7 +249,7 @@ function SwapDownChannel(screenState){
         number == 1
             ? channelToSwap = "channel9"
             : channelToSwap = "channel"+(number-1);
-        lastChannel = channelToSwap;
+        idLastChannel = channelToSwap;
         return channelToSwap;
     } else {
         return "screenOff";
@@ -299,7 +308,7 @@ function switchOnOffTV(isOnOffTV){
         stateToGive = "screenOff";
         statusTV = false;
     } else {
-        stateToGive = lastChannel;
+        stateToGive = idLastChannel;
         statusTV = true;
     }
     return stateToGive;
@@ -307,7 +316,7 @@ function switchOnOffTV(isOnOffTV){
 
 // Function called to save the channel, to restore the last channel when you switch off the TV
 function saveActualChannel(channel){
-    lastChannel = channel;
+    idLastChannel = channel;
 }
 
 // === UTILITY FUNCTIONS ===
@@ -355,7 +364,11 @@ function setHourIntoScreen(){
 
 // Function to set the actual channel into his container refresing the data
 function setActualChannelIntoScreen(){
-    channelText.innerHTML = lastChannel.toUpperCase();
+    for (let channel in channels){
+        if(channels[channel].id == idLastChannel){
+            channelText.innerHTML = channels[channel].name.toUpperCase();
+        }
+    }
 }
 
 // Function to show the info container to show info and make it dissapear 3 secs after is shown
@@ -397,7 +410,7 @@ function hideTelevisionGUI(){
 // Function to change the url in the video player element
 function setVideoOnScreen(channelInput){
     for (let channel in channels){
-        if(channels[channel].name == channelInput){
+        if(channels[channel].id == channelInput){
             let url = channels[channel].url;
             screen.src = url;
         }
@@ -432,6 +445,7 @@ function fillGuideList(){
     }
 }
 
+// Clean the guide list
 function unfillGuideList(){
     guideListContainer.innerHTML = "";
 }
