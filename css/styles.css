@@ -1,14 +1,19 @@
 body{
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 /* Container fluid - Bootstrap parent of all website content */
 #website{
-    display: flex;
     margin: 0;
     padding: 0;
     background-color: dimgrey;
+    height: auto;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* === SECTION CSS FOR THE TV === */
@@ -16,7 +21,7 @@ body{
 /* TV container parent */
 #televisionContainer{
     height: 100vh;
-    width: 80vw;
+    padding-left: 1em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,7 +31,6 @@ body{
 /* TV container */
 #television{
     height: 95vh;
-    width: 75vw;
 }
 
 /* TV black border around the screen */
@@ -88,7 +92,7 @@ body{
     width: 72vw;
     visibility: hidden;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-start;
     z-index: 5;
     position: absolute;
@@ -98,7 +102,7 @@ body{
 /* Box for the name channel on the info container */
 #channelText{
     color:rgba(255, 255, 255, 0.618);
-    font-size: 2.5em;
+    font-size: 1.5em;
     height: 10vh;
     width: 20vw;
     display: flex;
@@ -109,7 +113,7 @@ body{
 /* Box for the actual hour on the info container */
 #actualTime{
     color:rgba(255, 255, 255, 0.618);
-    font-size: 2.5em;
+    font-size: 1.5em;
     height: 10vh;
     width: 15vw;
     display: flex;
@@ -120,7 +124,8 @@ body{
 /* Box for the actual date on the info container */
 #actualDate{
     color:rgba(255, 255, 255, 0.618);
-    font-size: 2.5em;
+    font-size: 1.5em;
+    margin-right: 0.5em;
     height: 10vh;
     width: 15vw;
     display: flex;
@@ -188,7 +193,6 @@ body{
 /* Remote controller parent */
 #controllerContainer{
     height: 100vh;
-    width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,16 +201,15 @@ body{
 /* Remote controller */
 #remoteController{
     height: 49vh;
-    width : 15vw;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Class for each element inside remote controller */
 .controllerRow{
     background-color: black;
-    height: 7vh;
-    width : 15vw;
     display : flex;
     justify-content: center;
     align-items: center;
@@ -214,11 +217,23 @@ body{
 
 /* For the first 4 rows, there is a gap between the buttons to make 3 columns */
 .gapBetweenCols{
-    width: 6em;
+   height: 2em;
+   width: 2em;
+   margin: 0.8em;
+}
+
+#powerButton{
+    margin-top: 1.2em;
+    margin-left: 1.8em;
+}
+
+#homeButton{
+    margin-top: 1.2em;
+    margin-right: 1.8em;
 }
 
 /* Same features for the spacing of the power button and the up volume button on the remote controller */
-#powerButton, #arrowUpVolume{
+#arrowUpVolume{
     margin-top: 1.2em;
     margin-left: 1.2em;
 }
@@ -230,7 +245,7 @@ body{
 }
 
 /* Same features for the spacing of the home button and the down volume button on the remote controller */
-#homeButton, #arrowUpChannel{
+#arrowUpChannel{
     margin-top: 1.2em;
     margin-right: 1.2em;
 }
@@ -245,8 +260,8 @@ body{
 #powerButton{
     background-color: red;
     border-radius: 50%;
-    height: 2em;
-    width: 2em;
+    height: 1.8em;
+    width: 1.8em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -264,8 +279,8 @@ body{
 #homeButton{
     background-color: grey;
     border-radius: 50%;
-    height: 2em;
-    width: 2em;
+    height: 1.8em;
+    width: 1.8em;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -273,6 +288,7 @@ body{
 #muteButton, #guideButton{
     background-color: grey;
     border-radius: 10%;
+    margin: 0.9em;
     height: 1.8em;
     width: 1.8em;
     cursor: pointer;
@@ -285,23 +301,13 @@ body{
     transition: 0.5s;
 }
 
-/* Style for the icons inside the home and power button on the remote controller */
-#powerButton > i, #homeButton > i, #muteButton > i, #guideButton > i{
-    height: 1.8em;
-    width: 1.8em;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* Style for making an up arrow with CSS for volume and channel controllers on the remote controller*/
 .arrowUp{
     width: 0; 
     height: 0; 
-    border-left: 1.25em solid transparent;
-    border-right: 1.25em solid transparent;
-    border-bottom: 1.25em solid grey;
+    border-left: 1.2em solid transparent;
+    border-right: 1.2em solid transparent;
+    border-bottom: 1.2em solid grey;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -310,9 +316,9 @@ body{
 .arrowDown{
     width: 0; 
     height: 0; 
-    border-left: 1.25em solid transparent;
-    border-right: 1.25em solid transparent;
-    border-top: 1.25em solid grey;
+    border-left: 1.2em solid transparent;
+    border-right: 1.2em solid transparent;
+    border-top: 1.2em solid grey;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -331,21 +337,13 @@ body{
 
 /* Same features shared for the texts on the controller in relation with channel and volume */
 #volumeTag, #channelTag{
+    height: 2em;
+    width: 3.6em;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     color:white;
-}
-
-/* Spacing for VOL text on the controller */
-#volumeTag{
-    margin-left: 1.5em;
-}
-
-/* Spacing for CHN text on the controller */
-#channelTag{
-    margin-right: 1.5em;
 }
 
 /* Style for the buttons from 1 to 9 to change channel on the remote controller */
@@ -368,8 +366,8 @@ body{
     transition: 0.5s;
 }
 
-/* Style for the icons inside the channel number buttons on the remote controller */
-.channelButtons > i{
+/* Style for the icons inside all buttons on the remote controller */
+#powerButton > i, #homeButton > i, #muteButton > i, #guideButton > i, .channelButtons > i{
     height: 1.8em;
     width: 1.8em;
     color: white;

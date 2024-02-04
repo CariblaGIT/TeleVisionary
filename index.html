@@ -12,19 +12,19 @@
 </head>
 <body>
     <!-- Parent of all the website -->
-    <div class="container-fluid " id="website">
+    <div class="container-fluid d-flex flex-column flex-lg-row" id="website">
         <!-- TV container => TV based on Screen & Base -->
-        <div id="televisionContainer">
+        <div id="televisionContainer" class="col-12 col-lg-9">
             <!-- TV element -->
             <div id="television">
                 <!-- TV Screen, with parent as border and content as child to show the web functionalities -->
-                <div id="televisionScreenBase">
+                <div id="televisionScreenBase" class="container-fluid">
                     <video id="televisionScreen" class="screenOff" autoplay loop></video>
                     <!-- Container to show info about the channel and time to user -->
-                    <div id="info">
-                        <div id="channelText"></div>
-                        <div id="actualTime"></div>
-                        <div id="actualDate"></div>
+                    <div id="info" class="container-fluid">
+                        <div id="channelText" class="col-4"></div>
+                        <div id="actualTime" class="col-4"></div>
+                        <div id="actualDate" class="col-4"></div>
                     </div>
                     <!-- Container to show other info about the TV to user -->
                     <div id="screenOtherInfo">
@@ -45,80 +45,80 @@
             </div>
         </div>
         <!-- Controller container => Controller based on rows of buttons and / or gaps -->
-        <div id="controllerContainer">
+        <div id="controllerContainer" class="col-12 col-lg-3">
             <!-- Remote controller element -->
-            <div id="remoteController">
+            <div id="remoteController" class="container-fluid w-75 w-lg-25">
                 <!-- First row: Power button (Switch on/off TV) // Gap // Home button -->
-                <div class="controllerRow">
-                    <div id="powerButton">
+                <div class="controllerRow" class="container-fluid col-12">
+                    <div id="powerButton" class="col-4">
                         <i class="bi bi-power"></i>
                     </div>
-                    <div class="gapBetweenCols"></div>
-                    <div id="homeButton">
+                    <div class="gapBetweenCols col-0 col-lg-4"></div>
+                    <div id="homeButton" class="col-4">
                         <i class="bi bi-house"></i>
                     </div>
                 </div>
                 <!-- Second row: Arrows for increasing volume or channel, separated by a gap -->
-                <div class="controllerRow">
-                    <div id="arrowUpVolume" class="arrowUp"></div>
-                    <div class="gapBetweenCols"></div>
-                    <div id="arrowUpChannel" class="arrowUp"></div>
+                <div class="controllerRow" class="container-fluid col-12">
+                    <div id="arrowUpVolume" class="arrowUp col-4"></div>
+                    <div class="gapBetweenCols col-0 col-lg-4"></div>
+                    <div id="arrowUpChannel" class="arrowUp col-4"></div>
                 </div>
                 <!-- Third row: Texts related to show which arrows are for channel or volume controls, separated by a gap -->
-                <div class="controllerRow">
-                    <div id="volumeTag">VOL</div>
-                    <div class="gapBetweenCols"></div>
-                    <div id="channelTag">CHN</div>
+                <div class="controllerRow" class="container-fluid col-12">
+                    <div id="volumeTag" class="col-5 ml-0 ml-lg-3">VOL</div>
+                    <div class="gapBetweenCols col-0 col-lg-2"></div>
+                    <div id="channelTag" class="col-5 mr-0 mr-lg-3">CHN</div>
                 </div>
                 <!-- Fourth row: Arrows for decreasing volume or channel, separated by a gap -->
-                <div class="controllerRow">
-                    <div id="arrowDownVolume" class="arrowDown"></div>
-                    <div class="gapBetweenCols"></div>
-                    <div id="arrowDownChannel" class="arrowDown"></div>
+                <div class="controllerRow" class="col-12">
+                    <div id="arrowDownVolume" class="arrowDown col-4"></div>
+                    <div class="gapBetweenCols col-0 col-lg-4"></div>
+                    <div id="arrowDownChannel" class="arrowDown col-4"></div>
                 </div>
                 <!-- Fifth row: Other settings buttons -->
-                <div class="controllerRow">
-                    <div id="muteButton">
+                <div class="controllerRow" class="container-fluid col-12">
+                    <div id="muteButton" class="col-4">
                         <i class="bi bi-volume-mute"></i>
                     </div>
-                    <div class="gapBetweenCols"></div>
-                    <div id="guideButton">
+                    <div class="gapBetweenCols col-0 col-lg-4"></div>
+                    <div id="guideButton" class="col-4">
                         <i class="bi bi-list"></i>
                     </div>
                 </div>
                 <!-- Sixth row: Channel buttons from 1 to 3 -->
-                <div class="controllerRow">
-                    <div id="channelButton1" class="channelButtons">
+                <div class="controllerRow" class="container-fluid col-12">
+                    <div id="channelButton1" class="channelButtons col-4">
                         <i id ="1" class="bi bi-1-circle"></i>
                     </div>
-                    <div id="channelButton2" class="channelButtons">
+                    <div id="channelButton2" class="channelButtons col-4">
                         <i id ="2" class="bi bi-2-circle"></i>
                     </div>
-                    <div id="channelButton3" class="channelButtons">
+                    <div id="channelButton3" class="channelButtons col-4">
                         <i id ="3" class="bi bi-3-circle"></i>
                     </div>
                 </div>
                 <!-- Seventh row: Channel buttons from 4 to 6 -->
-                <div class="controllerRow">
-                    <div id="channelButton4" class="channelButtons">
+                <div class="controllerRow" class="container-fluid col-12">
+                    <div id="channelButton4" class="channelButtons col-4">
                         <i id ="4" class="bi bi-4-circle"></i>
                     </div>
-                    <div id="channelButton5" class="channelButtons">
+                    <div id="channelButton5" class="channelButtons col-4">
                         <i id ="5" class="bi bi-5-circle"></i>
                     </div>
-                    <div id="channelButton6" class="channelButtons">
+                    <div id="channelButton6" class="channelButtons col-4">
                         <i id ="6" class="bi bi-6-circle"></i>
                     </div>
                 </div>
                 <!-- Eighth row: Channel buttons from 7 to 9 -->
-                <div class="controllerRow">
-                    <div id="channelButton7" class="channelButtons">
+                <div class="controllerRow" class="container-fluid col-12">
+                    <div id="channelButton7" class="channelButtons col-4">
                         <i id ="7" class="bi bi-7-circle"></i>
                     </div>
-                    <div id="channelButton8" class="channelButtons">
+                    <div id="channelButton8" class="channelButtons col-4">
                         <i id ="8" class="bi bi-8-circle"></i>
                     </div>
-                    <div id="channelButton9" class="channelButtons">
+                    <div id="channelButton9" class="channelButtons col-4">
                         <i id ="9" class="bi bi-9-circle"></i>
                     </div>
                 </div>
