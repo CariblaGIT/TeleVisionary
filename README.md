@@ -53,13 +53,19 @@ You can try the [demo](https://cariblagit.github.io/TeleVisionary/) the latest v
 <br>
 ⬜ Guide menu for knowing the channels info and content
 <br>
-⬜ Making the website full responsive for all devices
+✅ Making the website full responsive for all devices
 <br>
 ⬜ Adding more channels and controlling the multiple number button input
 
 ## View
 
+<h4>Initial interface</h4>
+
 <img src="./img/index.png">
+
+<h4>TV on and working showing the channel and actual data</h4>
+
+<img src="./img/tv-on.png">
 
 ## Support
 
