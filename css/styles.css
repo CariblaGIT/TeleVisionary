@@ -21,7 +21,6 @@ body{
 /* TV container parent */
 #televisionContainer{
     height: 100vh;
-    padding-left: 1em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,7 +36,7 @@ body{
 #televisionScreenBase{
     background-color: black;
     height: 80vh;
-    width: 75vw;
+    width: 72vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +46,7 @@ body{
 #televisionScreen{
     margin-top: -2em;
     height: 70vh;
-    width: 72vw;
+    width: 69vw;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -64,7 +63,7 @@ body{
 /* TV base section */
 #televisionBase{
     height: 10vh;
-    width: 75vw;
+    width: 72vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -89,7 +88,7 @@ body{
 #info{
     background-color: rgba(128, 128, 128, 0.618);
     height: 10vh;
-    width: 72vw;
+    width: 69vw;
     visibility: hidden;
     display: flex;
     justify-content: space-between;
@@ -104,7 +103,6 @@ body{
     color:rgba(255, 255, 255, 0.618);
     font-size: 1.5em;
     height: 10vh;
-    width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,7 +113,6 @@ body{
     color:rgba(255, 255, 255, 0.618);
     font-size: 1.5em;
     height: 10vh;
-    width: 15vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,7 +124,6 @@ body{
     font-size: 1.5em;
     margin-right: 0.5em;
     height: 10vh;
-    width: 15vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -136,7 +132,7 @@ body{
 /* Container to other info in screen */
 #screenOtherInfo{
     height: 50vh;
-    width: 72vw;
+    width: 69vw;
     z-index: 5;
     display: flex;
     justify-content: flex-end;
@@ -163,6 +159,7 @@ body{
     color: rgba(255, 255, 255, 0.618);
 }
 
+/* Muted volume icon style */
 #volumeNumber > i{
     height: 1.8em;
     width: 1.8em;
@@ -222,17 +219,19 @@ body{
    margin: 0.8em;
 }
 
+/* Spacing for the power button related with the switch on / off interaction controlled by the controller */
 #powerButton{
     margin-top: 1.2em;
     margin-left: 1.8em;
 }
 
+/* Spacing for the home button related with the home interaction controlled by the controller */
 #homeButton{
     margin-top: 1.2em;
     margin-right: 1.8em;
 }
 
-/* Same features for the spacing of the power button and the up volume button on the remote controller */
+/* Spacing for arrow up button related with the volume controlled by the controller */
 #arrowUpVolume{
     margin-top: 1.2em;
     margin-left: 1.2em;
@@ -244,7 +243,7 @@ body{
     margin-left: 1.2em;
 }
 
-/* Same features for the spacing of the home button and the down volume button on the remote controller */
+/* Spacing for arrow up channel button related with the channels controlled by thee controller */
 #arrowUpChannel{
     margin-top: 1.2em;
     margin-right: 1.2em;
