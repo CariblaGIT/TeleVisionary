@@ -387,7 +387,7 @@ function setVolumeIntoPlayer(volume){
 // Function to set the TV menu on the screen 
 function homeButtonInteraction(){
     screen.src = "";
-    screen.poster = "../img/menu.jpg";
+    screen.poster = "./img/menu.jpg";
 }
 
 // Function to remove the TV menu off the screen
