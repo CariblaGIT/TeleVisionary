@@ -54,7 +54,7 @@ You can try the [demo](https://cariblagit.github.io/TeleVisionary/) the latest v
 
 ⬜ Getting the signal from actual real channels to set it into the content
 <br>
-⬜ Guide menu for knowing the channels info and content
+✅ Guide menu for knowing the channels info and content
 <br>
 ✅ Making the website full responsive for all devices
 <br>
