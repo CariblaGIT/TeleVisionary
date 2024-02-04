@@ -264,14 +264,23 @@ body{
     transition: 0.5s;
 }
 
+#muteButton, #guideButton{
+    background-color: grey;
+    border-radius: 10%;
+    height: 1.8em;
+    width: 1.8em;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
 /* Style for the home button on the remote controller */
-#homeButton:hover{
+#homeButton:hover, #muteButton:hover, #guideButton:hover{
     background-color: rgb(110, 108, 108);
     transition: 0.5s;
 }
 
 /* Style for the icons inside the home and power button on the remote controller */
-#powerButton > i, #homeButton > i{
+#powerButton > i, #homeButton > i, #muteButton > i, #guideButton > i{
     height: 1.8em;
     width: 1.8em;
     color: white;
