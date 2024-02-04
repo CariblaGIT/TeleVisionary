@@ -142,8 +142,11 @@ body{
 
 /* Volume container to show data to user about the volume control */
 #volumeContainer{
+    background-color: rgba(128, 128, 128, 0.618);
     height: 30vh;
-    width: 20vw;
+    width: 8vw;
+    margin: 1em;
+    border-radius: 0.5em;
     visibility: hidden;
     display: flex;
     align-items: center;
