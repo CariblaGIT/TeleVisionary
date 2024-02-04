@@ -12,7 +12,10 @@ const arrowDownChannelButton = document.getElementById("arrowDownChannel");
 const arrowUpVolumeButton = document.getElementById("arrowUpVolume");
 const arrowDownVolumeButton = document.getElementById("arrowDownVolume");
 
+// Getting the buttons from the controller for the TV settings
 const homeButton = document.getElementById("homeButton");
+const muteButton = document.getElementById("muteButton");
+// const guideButton = document.getElementById("guideButton");
 
 // Flag to reset the timeout of clicking repeated buttons of volume and channels
 let controlVolumeButtonsTimeout;
@@ -42,6 +45,7 @@ let statusTV = false;
 // Global variables for the volume bar and the unit of volume inside the ba
 let volume = 50;
 const volumeUnit = 0.3;
+let isMutedTV = false;
 
 // Data from channels
 const channels = [
@@ -153,10 +157,20 @@ arrowDownVolumeButton.addEventListener("click", () => {
     }
 })
 
+// Home button OnClickListener function to show the TV menu
 homeButton.addEventListener("click", () => {
     if(statusTV){
         hideTelevisionGUI();
         homeButtonInteraction();
+    }
+})
+
+// Mute button OnClickListener function to remove the volume to the player
+muteButton.addEventListener("click", () => {
+    if(statusTV){
+        hideTelevisionGUI();
+        showVolumeInScreen();
+        muteVolumePlayer(isMutedTV);
     }
 })
 
@@ -166,6 +180,7 @@ arraychannelButtons.map(
         item.addEventListener("click", (e) => {
             if(statusTV){
                 hideTelevisionGUI();
+                removeMenuFromTV();
                 screen.classList.remove(screen.classList[screen.classList.length - 1]);
                 let channelClass = "channel"+e.target.id;
                 saveActualChannel(channelClass);
@@ -221,6 +236,7 @@ function GoUpVolume(){
     let barHeight = (increasedVolume * volumeUnit).toString()+"vh";
     volume = increasedVolume;
     volumeBar.style.height = barHeight;
+    volumeNumber.innerHTML = "";
     volumeNumber.innerHTML = volume;
     setVolumeIntoPlayer(volume);
 }
@@ -234,8 +250,26 @@ function GoDownVolume(){
     let barHeight = (decreasedVolume * volumeUnit).toString()+"vh";
     volume = decreasedVolume;
     volumeBar.style.height = barHeight;
+    volumeNumber.innerHTML = "";
     volumeNumber.innerHTML = volume;
     setVolumeIntoPlayer(volume);
+}
+
+// Function to mute the volume into the player
+function muteVolumePlayer(isMuted){
+    if(!isMuted){
+        screen.volume = 0;
+        volumeNumber.innerHTML = "";
+        volumeBar.style.height = "0vh";
+        volumeNumber.innerHTML = "<i class='bi bi-volume-mute'></i>";
+        isMutedTV = true;
+    } else {
+        setVolumeIntoPlayer(volume);
+        volumeNumber.innerHTML = "";
+        volumeBar.style.height = (volume * volumeUnit).toString()+"vh";
+        volumeNumber.innerHTML = volume;
+        isMutedTV = false;
+    }
 }
 
 // Function to check the boolean to control the TV to switch between On or Off

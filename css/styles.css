@@ -158,6 +158,12 @@ body{
     color: rgba(255, 255, 255, 0.618);
 }
 
+#volumeNumber > i{
+    height: 1.8em;
+    width: 1.8em;
+    color: white;
+}
+
 /* Volume bar background container */
 #volumeBar{
     margin: 2em 1em 2em 1em;
