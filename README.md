@@ -42,6 +42,9 @@ You can try the [demo](https://cariblagit.github.io/TeleVisionary/) the latest v
 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">
     <img src= "https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
 </a>
+<a href="https://getbootstrap.com/">
+    <img src= "https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/>
+</a>
 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript">
     <img src= "https://img.shields.io/badge/javascipt-EFD81D?style=for-the-badge&logo=javascript&logoColor=black"/>
 </a>
