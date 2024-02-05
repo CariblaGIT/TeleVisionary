@@ -125,6 +125,7 @@ onOffButton.addEventListener("click", () => {
         hideTelevisionGUI();
         removeMenuFromTV();
         removeContentOnScreen();
+        unfillGuideList();
     }
 })
 
