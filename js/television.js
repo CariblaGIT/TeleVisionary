@@ -53,56 +53,56 @@ let isMutedTV = false;
 const channels = [
     channel1 = {
         "name": "La 1",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        "actualContentName": "The Big Buck Bunny",
+        "url": "./img/tvContent/GrandPrix.mp4",
+        "actualContentName": "Grand Prix",
         "id" : "channel1"
     },
     channel2 = {
         "name": "La 2",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-        "actualContentName": "The Elephants Dream",
+        "url": "./img/tvContent/SaberYGanar.mp4",
+        "actualContentName": "Saber Y Ganar",
         "id" : "channel2"
     },
     channel3 = {
         "name": "Antena 3",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-        "actualContentName": "For Bigger Blazes",
+        "url": "./img/tvContent/LaRuleta.mp4",
+        "actualContentName": "La Ruleta de la Suerte",
         "id" : "channel3"
     },
     channel4 = {
         "name": "Cuatro",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-        "actualContentName": "For Bigger Escapes",
+        "url": "./img/tvContent/Supernanny.mp4",
+        "actualContentName": "SupperNanny",
         "id" : "channel4"
     },
     channel5 = {
         "name": "Telecinco",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-        "actualContentName": "For Bigger Fun",
+        "url": "./img/tvContent/Pasapalabra.mp4",
+        "actualContentName": "Pasapalabra",
         "id" : "channel5"
     },
     channel6 = {
         "name": "LaSexta",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-        "actualContentName": "For Bigger Joyrides",
+        "url": "./img/tvContent/ElIntermedio.mp4",
+        "actualContentName": "El Intermedio",
         "id" : "channel6"
     },
     channel7 = {
         "name": "Teledeporte",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
-        "actualContentName": "For Bigger Meltdowns",
+        "url": "./img/tvContent/Quebrantahuesos.mp4",
+        "actualContentName": "Quebrantahuesos",
         "id" : "channel7"
     },
     channel8 = {
-        "name": "24H",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-        "actualContentName": "Sintel",
+        "name": "Neox",
+        "url": "./img/tvContent/NEXT.mp4",
+        "actualContentName": "NEXT",
         "id" : "channel8"
     },
     channel9 = {
-        "name": "Neox",
-        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
-        "actualContentName": "Need for Speed",
+        "name": "Canal 9",
+        "url": "./img/tvContent/Babaclub.mp4",
+        "actualContentName": "BabaClub",
         "id" : "channel9"
     }
 ];
@@ -330,7 +330,7 @@ function getTimeInHoursMins(){
         mins = "0"+mins;
     }
     if (hours.length == 1){
-        mins = "0"+mins;
+        hours = "0"+hours;
     }
     return (hours+":"+mins);
 }
