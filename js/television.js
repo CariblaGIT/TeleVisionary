@@ -28,7 +28,7 @@ let arraychannelButtons = Array.from(channelButtons);
 // Saving screen HTML element on a variable
 const screen = document.getElementById("televisionScreen");
 
-// Saving channel, date and hour on screen HTML elements on variables
+// Saving channel, date, volume, guide and leds of HTML elements into variables
 const channelText = document.getElementById("channelText");
 const hourText = document.getElementById("actualTime");
 const dateText = document.getElementById("actualDate");
@@ -37,6 +37,7 @@ const volumeContainer = document.getElementById("volumeContainer");
 const volumeNumber = document.getElementById("volumeNumber");
 const volumeBar = document.getElementById("barUpDown");
 const guideListContainer = document.getElementById("guideMenu");
+const ledSwitchOnOff = document.getElementById("ledOnOffTV");
 
 // === SETTING GLOBAL VARIABLES FOR THE INTERACTIONS ===
 
@@ -121,11 +122,13 @@ onOffButton.addEventListener("click", () => {
         fillGuideList();
         setActualChannelIntoScreen();
         setVideoOnScreen(channelClass);
+        switchLedTV();
     } else {
         hideTelevisionGUI();
         removeMenuFromTV();
         removeContentOnScreen();
         unfillGuideList();
+        switchLedTV();
     }
 })
 
@@ -449,4 +452,11 @@ function fillGuideList(){
 // Clean the guide list
 function unfillGuideList(){
     guideListContainer.innerHTML = "";
+}
+
+// Switch the led if the TV is on or off
+function switchLedTV(){
+    (statusTV)
+        ? ledSwitchOnOff.style.backgroundColor = "white"
+        : ledSwitchOnOff.style.backgroundColor = "red"
 }
