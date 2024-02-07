@@ -25,6 +25,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-right: 1.5em;
 }
 
 /* TV container */
@@ -252,6 +253,7 @@ body{
 /* Remote controller parent */
 #controllerContainer{
     height: 100vh;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
