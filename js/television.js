@@ -231,7 +231,7 @@ arraychannelButtons.map(
 // === FUNCTIONS FOR THE LISTENERS TO ACCESS GLOBAL VARIABLES ===
 
 // Function to swap Up the channel
-function SwapUpChannel(screenState){
+let SwapUpChannel = (screenState) => {
     if(statusTV){
         let number = parseInt(screenState.slice(-1));
         let channelToSwap;
@@ -246,7 +246,7 @@ function SwapUpChannel(screenState){
 }
 
 // Function to swap Down the channel
-function SwapDownChannel(screenState){
+let SwapDownChannel = (screenState) => {
     if(statusTV){
         let number = parseInt(screenState.slice(-1));
         let channelToSwap;
@@ -261,7 +261,7 @@ function SwapDownChannel(screenState){
 }
 
 // Function to increase the volume
-function GoUpVolume(){
+const GoUpVolume = () => {
     let increasedVolume;
     volume == 100
         ? increasedVolume = 100
@@ -275,7 +275,7 @@ function GoUpVolume(){
 }
 
 // Function to decrease the volume
-function GoDownVolume(){
+const GoDownVolume = () => {
     let decreasedVolume;
     volume == 0
         ? decreasedVolume = 0
@@ -289,7 +289,7 @@ function GoDownVolume(){
 }
 
 // Function to mute the volume into the player
-function MuteVolumePlayer(isMuted){
+const MuteVolumePlayer = (isMuted) => {
     if(!isMuted){
         screen.volume = 0;
         volumeNumber.innerHTML = "";
@@ -306,7 +306,7 @@ function MuteVolumePlayer(isMuted){
 }
 
 // Function to check the boolean to control the TV to switch between On or Off
-function SwitchOnOffTV(isOnOffTV){
+let SwitchOnOffTV = (isOnOffTV) => {
     let stateToGive;
     if (isOnOffTV){
         stateToGive = "screenOff";
@@ -319,14 +319,14 @@ function SwitchOnOffTV(isOnOffTV){
 }
 
 // Function called to save the channel, to restore the last channel when you switch off the TV
-function SaveActualChannel(channel){
+const SaveActualChannel = (channel) => {
     idLastChannel = channel;
 }
 
 // === UTILITY FUNCTIONS ===
 
 // Function to get the actual hour in format HH:MM
-function GetTimeInHoursMins(){
+let GetTimeInHoursMins = () => {
     const now = new Date();
     let mins = now.getMinutes().toString();
     let hours = now.getHours().toString();
@@ -340,7 +340,7 @@ function GetTimeInHoursMins(){
 }
 
 // Function to get the actual date in format DD/MM/YYYY
-function GetDate(){
+let GetDate = () => {
     const now = new Date();
     let day = now.getDate().toString();
     let year = now.getFullYear().toString();
@@ -355,19 +355,19 @@ function GetDate(){
 }
 
 // Function to set the date info into his container refresing the data
-function SetDateIntoScreen(){
+const SetDateIntoScreen = () => {
     let date = GetDate();
     dateText.innerHTML = date;
 }
 
 // Function to set the hour info into his container refresing the data
-function SetHourIntoScreen(){
+const SetHourIntoScreen = () => {
     let time = GetTimeInHoursMins();
     hourText.innerHTML = time;
 }
 
 // Function to set the actual channel into his container refresing the data
-function SetActualChannelIntoScreen(){
+const SetActualChannelIntoScreen = () => {
     for (let channel in channels){
         if(channels[channel].id == idLastChannel){
             channelText.innerHTML = channels[channel].name.toUpperCase();
@@ -376,7 +376,7 @@ function SetActualChannelIntoScreen(){
 }
 
 // Function to show the info container to show info and make it dissapear 3 secs after is shown
-function ShowInfoInScreen(){
+const ShowInfoInScreen = () => {
     clearTimeout(controlChannelButtonsTimeout);
     infoContainer.style.visibility = "visible";
     controlChannelButtonsTimeout = setTimeout(function() {
@@ -385,7 +385,7 @@ function ShowInfoInScreen(){
 }
 
 // Function to show the volume container to show info and make it dissapear 5 secs after is shown
-function ShowVolumeInScreen(){
+const ShowVolumeInScreen = () => {
     clearTimeout(controlVolumeButtonsTimeout);
     volumeContainer.style.visibility = "visible";
     controlVolumeButtonsTimeout = setTimeout(function() {
@@ -393,7 +393,7 @@ function ShowVolumeInScreen(){
       }, 3000);
 }
 
-function ShowGuideInScreen(){
+const ShowGuideInScreen = () => {
     clearTimeout(controlGuideButtonTimeout);
     guideListContainer.style.visibility = "visible";
     controlGuideButtonTimeout = setTimeout(function() {
@@ -402,7 +402,7 @@ function ShowGuideInScreen(){
 }
 
 // Function to hide all interface elements on screen and removing the timeouts of the buttons
-function HideTelevisionGUI(){
+const HideTelevisionGUI = () => {
     clearTimeout(controlVolumeButtonsTimeout);
     clearTimeout(controlChannelButtonsTimeout);
     clearTimeout(controlGuideButtonTimeout);
@@ -412,7 +412,7 @@ function HideTelevisionGUI(){
 }
 
 // Function to change the url in the video player element
-function SetVideoOnScreen(channelInput){
+const SetVideoOnScreen = (channelInput) => {
     for (let channel in channels){
         if(channels[channel].id == channelInput){
             let url = channels[channel].url;
@@ -422,40 +422,40 @@ function SetVideoOnScreen(channelInput){
 }
 
 // Function to remove the content inside the TV
-function RemoveContentOnScreen(){
+const RemoveContentOnScreen = () => {
     screen.src = "";
 }
 
 // Function to set the variable volume into the player
-function SetVolumeIntoPlayer(volume){
+const SetVolumeIntoPlayer = (volume) => {
     screen.volume = (volume/100);
 }
 
 // Function to set the TV menu on the screen 
-function HomeButtonInteraction(){
+const HomeButtonInteraction = () => {
     screen.src = "";
     screen.poster = "./img/menu.jpg";
 }
 
 // Function to remove the TV menu off the screen
-function RemoveMenuFromTV(){
+const RemoveMenuFromTV = () => {
     screen.removeAttribute("poster");
 }
 
 // Function to fill guide list with channel list info
-function FillGuideList(){
+const FillGuideList = () => {
     for (let channel in channels){
         guideListContainer.innerHTML += "<div class='rowGuide col-12'><div id='channelName' class='col-6'>"+channels[channel].name.toUpperCase()+"</div><div id='channelActualContent' class='col-6'>"+channels[channel].actualContentName+"</div></div>";
     }
 }
 
 // Clean the guide list
-function UnfillGuideList(){
+const UnfillGuideList = () => {
     guideListContainer.innerHTML = "";
 }
 
 // Switch the led if the TV is on or off
-function SwitchLedTV(){
+const SwitchLedTV = () => {
     (statusTV)
         ? ledSwitchOnOff.style.backgroundColor = "white"
         : ledSwitchOnOff.style.backgroundColor = "red"
