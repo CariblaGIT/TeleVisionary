@@ -41,6 +41,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 1em;
+
 }
 
 /* TV screen where the user will see the changes by using the controller */
@@ -53,6 +55,7 @@ body{
     position: relative;
     border: solid 2px white;
     z-index: 1;
+    border-radius: 1em;
 }
 
 /* TV screen section to show the channels */
@@ -83,6 +86,8 @@ body{
     background-color: black;
     height: 5vh;
     width: 30vw;
+    border-top-left-radius: 1.5em;
+    border-top-right-radius: 1.5em;
 }
 
 /* Info container to show data to user about the time or the actual channel */
@@ -222,6 +227,7 @@ body{
     justify-content: center;
 }
 
+/* Container of the lights of the screenBase on the TV */
 #ledsButtonsTV{
     height: 5vh;
     width: 69vw;
@@ -233,6 +239,7 @@ body{
     bottom: 18vh;
 }
 
+/* Light to know if the TV is on or off on the TV */
 #ledOnOffTV{
     background-color: red;
     height: 1.5em;
@@ -265,6 +272,19 @@ body{
     display : flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Style for the first row to be rounded */
+.topRow{
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+}
+
+/* Style for the last row to be rounded */
+.bottomRow{
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+    padding-bottom: 0.5em;
 }
 
 /* For the first 4 rows, there is a gap between the buttons to make 3 columns */
@@ -340,6 +360,7 @@ body{
     transition: all 0.03s linear;
 }
 
+/* Style for the mute and guide buttons on the controller */
 #muteButton, #guideButton{
     background-color: grey;
     border-radius: 10%;
@@ -439,12 +460,13 @@ body{
     background-color: rgb(31, 30, 30);
 }
 
-/* Style for the circular buttons when you press it */
+/* Event after clicking the buttons to simulate be pressed */
 #powerButton:active, #muteButton:active, #guideButton:active, #homeButton:active, .channelButtons:active{
     box-shadow: 0 0 0.25em black;
     transform: translateY(0.25em);
 }
 
+/* Event after clicking the arrows to simulate be pressed */
 .arrowDown:active, .arrowUp:active{
     -webkit-filter: drop-shadow(0 0 0.25em rgba(0,0,0,.5));
     filter: drop-shadow(0 0 0.25em rgba(0,0,0,.5));
