@@ -102,7 +102,7 @@ body{
     align-items: flex-start;
     z-index: 5;
     position: absolute;
-    top: 5vh;
+    top: 8vh;
 }
 
 /* Box for the name channel on the info container */
