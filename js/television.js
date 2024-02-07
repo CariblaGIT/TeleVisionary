@@ -113,62 +113,62 @@ const channels = [
 // Power button OnClickListener function and the info interactions around it
 onOffButton.addEventListener("click", () => {
     screen.classList.remove(screen.classList[screen.classList.length - 1]);
-    let channelClass = switchOnOffTV(statusTV);
+    let channelClass = SwitchOnOffTV(statusTV);
     screen.classList.add(channelClass);
     if(channelClass != "screenOff"){
-        showInfoInScreen();
-        setDateIntoScreen();
-        setHourIntoScreen();
-        fillGuideList();
-        setActualChannelIntoScreen();
-        setVideoOnScreen(channelClass);
-        switchLedTV();
+        ShowInfoInScreen();
+        SetDateIntoScreen();
+        SetHourIntoScreen();
+        FillGuideList();
+        SetActualChannelIntoScreen();
+        SetVideoOnScreen(channelClass);
+        SwitchLedTV();
     } else {
-        hideTelevisionGUI();
-        removeMenuFromTV();
-        removeContentOnScreen();
-        unfillGuideList();
-        switchLedTV();
+        HideTelevisionGUI();
+        RemoveMenuFromTV();
+        RemoveContentOnScreen();
+        UnfillGuideList();
+        SwitchLedTV();
     }
 })
 
 // Up channel button OnClickListener function and the info interactions around it
 arrowUpChannelButton.addEventListener("click", () => {
     if(statusTV){
-        hideTelevisionGUI();
-        removeMenuFromTV();
+        HideTelevisionGUI();
+        RemoveMenuFromTV();
         let channelClass = SwapUpChannel(screen.classList[screen.classList.length - 1]);
         screen.classList.remove(screen.classList[screen.classList.length - 1]);
         screen.classList.add(channelClass);
-        showInfoInScreen();
-        setDateIntoScreen();
-        setHourIntoScreen();
-        setActualChannelIntoScreen();
-        setVideoOnScreen(channelClass);
+        ShowInfoInScreen();
+        SetDateIntoScreen();
+        SetHourIntoScreen();
+        SetActualChannelIntoScreen();
+        SetVideoOnScreen(channelClass);
     }
 })
 
 // Down channel button OnClickListener function and the info interactions around it
 arrowDownChannelButton.addEventListener("click", () => {
     if(statusTV){
-        hideTelevisionGUI();
-        removeMenuFromTV();
+        HideTelevisionGUI();
+        RemoveMenuFromTV();
         let channelClass = SwapDownChannel(screen.classList[screen.classList.length - 1]);
         screen.classList.remove(screen.classList[screen.classList.length - 1]);
         screen.classList.add(channelClass);
-        showInfoInScreen();
-        setDateIntoScreen();
-        setHourIntoScreen();
-        setActualChannelIntoScreen();
-        setVideoOnScreen(channelClass);
+        ShowInfoInScreen();
+        SetDateIntoScreen();
+        SetHourIntoScreen();
+        SetActualChannelIntoScreen();
+        SetVideoOnScreen(channelClass);
     }
 })
 
 // Up channel button OnClickListener function and the info interactions around it
 arrowUpVolumeButton.addEventListener("click", () => {
     if(statusTV){
-        hideTelevisionGUI();
-        showVolumeInScreen();
+        HideTelevisionGUI();
+        ShowVolumeInScreen();
         GoUpVolume();
     }
 })
@@ -176,8 +176,8 @@ arrowUpVolumeButton.addEventListener("click", () => {
 // Down channel button OnClickListener function and the info interactions around it
 arrowDownVolumeButton.addEventListener("click", () => {
     if(statusTV){
-        hideTelevisionGUI();
-        showVolumeInScreen();
+        HideTelevisionGUI();
+        ShowVolumeInScreen();
         GoDownVolume();
     }
 })
@@ -185,25 +185,25 @@ arrowDownVolumeButton.addEventListener("click", () => {
 // Home button OnClickListener function to show the TV menu
 homeButton.addEventListener("click", () => {
     if(statusTV){
-        hideTelevisionGUI();
-        homeButtonInteraction();
+        HideTelevisionGUI();
+        HomeButtonInteraction();
     }
 })
 
 // Mute button OnClickListener function to remove the volume to the player
 muteButton.addEventListener("click", () => {
     if(statusTV){
-        hideTelevisionGUI();
-        showVolumeInScreen();
-        muteVolumePlayer(isMutedTV);
+        HideTelevisionGUI();
+        ShowVolumeInScreen();
+        MuteVolumePlayer(isMutedTV);
     }
 })
 
 // Guide button OnClickListener function to show a list of channels with their content
 guideButton.addEventListener("click", () => {
     if(statusTV){
-        hideTelevisionGUI();
-        showGuideInScreen();
+        HideTelevisionGUI();
+        ShowGuideInScreen();
     }
 })
 
@@ -212,17 +212,17 @@ arraychannelButtons.map(
     item => {
         item.addEventListener("click", (e) => {
             if(statusTV){
-                hideTelevisionGUI();
-                removeMenuFromTV();
+                HideTelevisionGUI();
+                RemoveMenuFromTV();
                 screen.classList.remove(screen.classList[screen.classList.length - 1]);
                 let channelClass = "channel"+e.target.id;
-                saveActualChannel(channelClass);
+                SaveActualChannel(channelClass);
                 screen.classList.add(channelClass);
-                showInfoInScreen();
-                setDateIntoScreen();
-                setHourIntoScreen();
-                setActualChannelIntoScreen();
-                setVideoOnScreen(channelClass);
+                ShowInfoInScreen();
+                SetDateIntoScreen();
+                SetHourIntoScreen();
+                SetActualChannelIntoScreen();
+                SetVideoOnScreen(channelClass);
             }
         })
     }
@@ -271,7 +271,7 @@ function GoUpVolume(){
     volumeBar.style.height = barHeight;
     volumeNumber.innerHTML = "";
     volumeNumber.innerHTML = volume;
-    setVolumeIntoPlayer(volume);
+    SetVolumeIntoPlayer(volume);
 }
 
 // Function to decrease the volume
@@ -285,11 +285,11 @@ function GoDownVolume(){
     volumeBar.style.height = barHeight;
     volumeNumber.innerHTML = "";
     volumeNumber.innerHTML = volume;
-    setVolumeIntoPlayer(volume);
+    SetVolumeIntoPlayer(volume);
 }
 
 // Function to mute the volume into the player
-function muteVolumePlayer(isMuted){
+function MuteVolumePlayer(isMuted){
     if(!isMuted){
         screen.volume = 0;
         volumeNumber.innerHTML = "";
@@ -297,7 +297,7 @@ function muteVolumePlayer(isMuted){
         volumeNumber.innerHTML = "<i class='bi bi-volume-mute'></i>";
         isMutedTV = true;
     } else {
-        setVolumeIntoPlayer(volume);
+        SetVolumeIntoPlayer(volume);
         volumeNumber.innerHTML = "";
         volumeBar.style.height = (volume * volumeUnit).toString()+"vh";
         volumeNumber.innerHTML = volume;
@@ -306,7 +306,7 @@ function muteVolumePlayer(isMuted){
 }
 
 // Function to check the boolean to control the TV to switch between On or Off
-function switchOnOffTV(isOnOffTV){
+function SwitchOnOffTV(isOnOffTV){
     let stateToGive;
     if (isOnOffTV){
         stateToGive = "screenOff";
@@ -319,14 +319,14 @@ function switchOnOffTV(isOnOffTV){
 }
 
 // Function called to save the channel, to restore the last channel when you switch off the TV
-function saveActualChannel(channel){
+function SaveActualChannel(channel){
     idLastChannel = channel;
 }
 
 // === UTILITY FUNCTIONS ===
 
 // Function to get the actual hour in format HH:MM
-function getTimeInHoursMins(){
+function GetTimeInHoursMins(){
     const now = new Date();
     let mins = now.getMinutes().toString();
     let hours = now.getHours().toString();
@@ -340,7 +340,7 @@ function getTimeInHoursMins(){
 }
 
 // Function to get the actual date in format DD/MM/YYYY
-function getDate(){
+function GetDate(){
     const now = new Date();
     let day = now.getDate().toString();
     let year = now.getFullYear().toString();
@@ -355,19 +355,19 @@ function getDate(){
 }
 
 // Function to set the date info into his container refresing the data
-function setDateIntoScreen(){
-    let date = getDate();
+function SetDateIntoScreen(){
+    let date = GetDate();
     dateText.innerHTML = date;
 }
 
 // Function to set the hour info into his container refresing the data
-function setHourIntoScreen(){
-    let time = getTimeInHoursMins();
+function SetHourIntoScreen(){
+    let time = GetTimeInHoursMins();
     hourText.innerHTML = time;
 }
 
 // Function to set the actual channel into his container refresing the data
-function setActualChannelIntoScreen(){
+function SetActualChannelIntoScreen(){
     for (let channel in channels){
         if(channels[channel].id == idLastChannel){
             channelText.innerHTML = channels[channel].name.toUpperCase();
@@ -376,7 +376,7 @@ function setActualChannelIntoScreen(){
 }
 
 // Function to show the info container to show info and make it dissapear 3 secs after is shown
-function showInfoInScreen(){
+function ShowInfoInScreen(){
     clearTimeout(controlChannelButtonsTimeout);
     infoContainer.style.visibility = "visible";
     controlChannelButtonsTimeout = setTimeout(function() {
@@ -385,7 +385,7 @@ function showInfoInScreen(){
 }
 
 // Function to show the volume container to show info and make it dissapear 5 secs after is shown
-function showVolumeInScreen(){
+function ShowVolumeInScreen(){
     clearTimeout(controlVolumeButtonsTimeout);
     volumeContainer.style.visibility = "visible";
     controlVolumeButtonsTimeout = setTimeout(function() {
@@ -393,7 +393,7 @@ function showVolumeInScreen(){
       }, 3000);
 }
 
-function showGuideInScreen(){
+function ShowGuideInScreen(){
     clearTimeout(controlGuideButtonTimeout);
     guideListContainer.style.visibility = "visible";
     controlGuideButtonTimeout = setTimeout(function() {
@@ -402,7 +402,7 @@ function showGuideInScreen(){
 }
 
 // Function to hide all interface elements on screen and removing the timeouts of the buttons
-function hideTelevisionGUI(){
+function HideTelevisionGUI(){
     clearTimeout(controlVolumeButtonsTimeout);
     clearTimeout(controlChannelButtonsTimeout);
     clearTimeout(controlGuideButtonTimeout);
@@ -412,7 +412,7 @@ function hideTelevisionGUI(){
 }
 
 // Function to change the url in the video player element
-function setVideoOnScreen(channelInput){
+function SetVideoOnScreen(channelInput){
     for (let channel in channels){
         if(channels[channel].id == channelInput){
             let url = channels[channel].url;
@@ -422,40 +422,40 @@ function setVideoOnScreen(channelInput){
 }
 
 // Function to remove the content inside the TV
-function removeContentOnScreen(){
+function RemoveContentOnScreen(){
     screen.src = "";
 }
 
 // Function to set the variable volume into the player
-function setVolumeIntoPlayer(volume){
+function SetVolumeIntoPlayer(volume){
     screen.volume = (volume/100);
 }
 
 // Function to set the TV menu on the screen 
-function homeButtonInteraction(){
+function HomeButtonInteraction(){
     screen.src = "";
     screen.poster = "./img/menu.jpg";
 }
 
 // Function to remove the TV menu off the screen
-function removeMenuFromTV(){
+function RemoveMenuFromTV(){
     screen.removeAttribute("poster");
 }
 
 // Function to fill guide list with channel list info
-function fillGuideList(){
+function FillGuideList(){
     for (let channel in channels){
         guideListContainer.innerHTML += "<div class='rowGuide col-12'><div id='channelName' class='col-6'>"+channels[channel].name.toUpperCase()+"</div><div id='channelActualContent' class='col-6'>"+channels[channel].actualContentName+"</div></div>";
     }
 }
 
 // Clean the guide list
-function unfillGuideList(){
+function UnfillGuideList(){
     guideListContainer.innerHTML = "";
 }
 
 // Switch the led if the TV is on or off
-function switchLedTV(){
+function SwitchLedTV(){
     (statusTV)
         ? ledSwitchOnOff.style.backgroundColor = "white"
         : ledSwitchOnOff.style.backgroundColor = "red"
