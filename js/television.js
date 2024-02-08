@@ -137,7 +137,7 @@ arrowUpChannelButton.addEventListener("click", () => {
     if(statusTV){
         HideTelevisionGUI();
         RemoveMenuFromTV();
-        let channelClass = SwapUpChannel(screen.classList[screen.classList.length - 1]);
+        let channelClass = SwapChannel(screen.classList[screen.classList.length - 1], "UP");
         screen.classList.remove(screen.classList[screen.classList.length - 1]);
         screen.classList.add(channelClass);
         ShowInfoInScreen();
@@ -153,7 +153,7 @@ arrowDownChannelButton.addEventListener("click", () => {
     if(statusTV){
         HideTelevisionGUI();
         RemoveMenuFromTV();
-        let channelClass = SwapDownChannel(screen.classList[screen.classList.length - 1]);
+        let channelClass = SwapChannel(screen.classList[screen.classList.length - 1], "DOWN");
         screen.classList.remove(screen.classList[screen.classList.length - 1]);
         screen.classList.add(channelClass);
         ShowInfoInScreen();
@@ -169,7 +169,7 @@ arrowUpVolumeButton.addEventListener("click", () => {
     if(statusTV){
         HideTelevisionGUI();
         ShowVolumeInScreen();
-        GoUpVolume();
+        ModifyVolume("UP");
     }
 })
 
@@ -178,7 +178,7 @@ arrowDownVolumeButton.addEventListener("click", () => {
     if(statusTV){
         HideTelevisionGUI();
         ShowVolumeInScreen();
-        GoDownVolume();
+        ModifyVolume("DOWN");
     }
 })
 
@@ -208,7 +208,7 @@ guideButton.addEventListener("click", () => {
 })
 
 // Mapping all the channel buttons and setting OnClickListener to change between channels and the info interactions around it
-arraychannelButtons.map(
+arraychannelButtons.forEach(
     item => {
         item.addEventListener("click", (e) => {
             if(statusTV){
@@ -230,14 +230,16 @@ arraychannelButtons.map(
 
 // === FUNCTIONS FOR THE LISTENERS TO ACCESS GLOBAL VARIABLES ===
 
-// Function to swap Up the channel
-let SwapUpChannel = (screenState) => {
-    if(statusTV){
-        let number = parseInt(screenState.slice(-1));
-        let channelToSwap;
-        number == 9
-            ? channelToSwap = "channel1"
-            : channelToSwap = "channel"+(number+1);
+// Function to swap up or down the channel depending on button pressed
+let SwapChannel = (screenState, button) => {
+    let number = parseInt(screenState.slice(-1));
+    let channelToSwap;
+    if(statusTV && button == "UP"){
+        number == 9 ? channelToSwap = "channel1" : channelToSwap = "channel"+(number+1);
+        idLastChannel = channelToSwap;
+        return channelToSwap;
+    } else  if (statusTV && button == "DOWN"){
+        number == 1 ? channelToSwap = "channel9" : channelToSwap = "channel"+(number-1);
         idLastChannel = channelToSwap;
         return channelToSwap;
     } else {
@@ -245,43 +247,16 @@ let SwapUpChannel = (screenState) => {
     }
 }
 
-// Function to swap Down the channel
-let SwapDownChannel = (screenState) => {
-    if(statusTV){
-        let number = parseInt(screenState.slice(-1));
-        let channelToSwap;
-        number == 1
-            ? channelToSwap = "channel9"
-            : channelToSwap = "channel"+(number-1);
-        idLastChannel = channelToSwap;
-        return channelToSwap;
+// Function to modify volume up or down depending on button pressed
+const ModifyVolume = (button) => {
+    let modifyVolume;
+    if(button == "UP"){
+        volume == 100 ? modifyVolume = 100 : modifyVolume = volume + 1
     } else {
-        return "screenOff";
-    } 
-}
-
-// Function to increase the volume
-const GoUpVolume = () => {
-    let increasedVolume;
-    volume == 100
-        ? increasedVolume = 100
-        : increasedVolume = volume + 1
-    let barHeight = (increasedVolume * volumeUnit).toString()+"vh";
-    volume = increasedVolume;
-    volumeBar.style.height = barHeight;
-    volumeNumber.innerHTML = "";
-    volumeNumber.innerHTML = volume;
-    SetVolumeIntoPlayer(volume);
-}
-
-// Function to decrease the volume
-const GoDownVolume = () => {
-    let decreasedVolume;
-    volume == 0
-        ? decreasedVolume = 0
-        : decreasedVolume = volume - 1
-    let barHeight = (decreasedVolume * volumeUnit).toString()+"vh";
-    volume = decreasedVolume;
+        volume == 0 ? modifyVolume = 0 : modifyVolume = volume - 1
+    }
+    let barHeight = (modifyVolume * volumeUnit).toString()+"vh";
+    volume = modifyVolume;
     volumeBar.style.height = barHeight;
     volumeNumber.innerHTML = "";
     volumeNumber.innerHTML = volume;
